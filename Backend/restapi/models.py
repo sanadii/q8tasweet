@@ -66,7 +66,6 @@ class TbMenu(models.Model):
 
 class TbPermission(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    menu = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
     create_by = models.IntegerField(blank=True, null=True)
@@ -156,3 +155,13 @@ class TbVoters(models.Model):
     class Meta:
         managed = False
         db_table = 'tb_voters'
+
+class TbPermissionMenu(models.Model):
+    permissionid = models.IntegerField(db_column='permissionId', blank=True, null=True)
+    menuid = models.IntegerField(db_column='menuId', blank=True, null=True)
+    value = models.CharField(max_length=255, blank=True, null=True)
+    label = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tb_permissionmenu'

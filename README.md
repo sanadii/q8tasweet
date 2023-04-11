@@ -11,5 +11,5 @@ how can run django-backend?
 
 1. open backend file.
 2. run commant
-3. run backend/django-world/Scripts/django-world/Scripts
+3. run backend/myworld/Scripts/django-world/Scripts
 4. run "python manage.py runserver"

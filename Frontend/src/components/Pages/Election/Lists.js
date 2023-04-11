@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button, Row, Col, Card, Form, FormGroup, Modal } from "react-bootstrap";
+import { Button, Row, Col, Card, Form, FormGroup, Modal, Table } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import moment from 'moment';
-import { election_status } from "../../Constant/Config"
+import { election_status, backend_url } from "../../Constant/Config"
 import { Tag } from 'antd';
+import Swal from "sweetalert2";
 const ElectionLists = () => {
   const columns = [
     {
@@ -17,11 +19,10 @@ const ElectionLists = () => {
       name: "ID",
       title: "election_id",
       selector: (row) => [row.election_id],
-      sorter: (a, b) => a.ID - b.ID > 0,
-      sortable: true,
+      // sortable: true,
     },
     {
-      name: " Title",
+      name: "Title",
       title: "title",
       selector: (row) => [row.title],
       sortable: true
@@ -65,24 +66,53 @@ const ElectionLists = () => {
     },
     {
       name: "Action",
-      length: 1,
       cell: (row) => (
-        <Row style={{ width: "100%" }}>
-          <Col lg={12}>
-            {row.del_flag - 1 === 0 ? <></> : <>
-              {row.status - 3 !== 0 && row.status - 4 !== 0 ?
-                <label className="float-end">
-                  <Tag color='red' className='table_action_button' onClick={() => deleteRow(row.id)}><i className="las la-trash" style={{ fontSize: "20px" }}></i></Tag>
-                </label> : <></>}
-              {row.status - 2 < 0 ?
-                <label className="float-end">
-                  <Tag color='green' className='table_action_button'><i onClick={() => { handleDetailShow(); setElection({ id: row.id, election_id: row.election_id, title: row.title, description: row.description, status: row.status, date: row.date, location: row.location, type: row.type, moderators: row.moderators }) }} className="las la-pen" style={{ fontSize: "20px" }}></i></Tag>
-                </label> : <></>}</>}
-            {/* <label className="float-end">
-              <Tag color='blue' className='table_action_button'><i className="las la-clipboard" style={{ fontSize: "20px" }}></i></Tag>
-            </label> */}
-          </Col>
-        </Row>
+        <span className="" style={{ width: "100%", textAlign: "end" }}>
+          {
+            row.del_flag - 1 === 0 ?
+              <></>
+              :
+              <>
+                {
+                  row.status - 3 < 0 ?
+                    <OverlayTrigger placement="top" overlay={<Tooltip>Edit</Tooltip>}>
+                      <Link to="#" className="btn btn-primary btn-sm rounded-11 me-2" onClick={() => editRow(row)} >
+                        <i>
+                          <svg
+                            className="table-edit"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            width="16"
+                          >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z" />
+                          </svg>
+                        </i>
+                      </Link>
+                    </OverlayTrigger>
+                    :
+                    <></>
+                }
+                <OverlayTrigger placement="top" overlay={<Tooltip>Delete</Tooltip>} >
+                  <Link to="#" className="btn btn-danger btn-sm rounded-11" onClick={() => deleteRow(row.id)}>
+                    <i>
+                      <svg
+                        className="table-delete"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        width="16"
+                      >
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z" />
+                      </svg>
+                    </i>
+                  </Link>
+                </OverlayTrigger>
+              </>
+          }
+        </span >
       )
     }
   ];
@@ -109,15 +139,34 @@ const ElectionLists = () => {
     moderators: "",
   })
   const getData = (data) => {
-    fetch('http://127.0.0.1:8000/getElection/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
+    fetch(backend_url + 'getElection/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
       .then(response => response.json())
       .then(data => setAllData({ data: data.data, count: data.count }));
   }
   const deleteRow = (id) => {
-    const data = postData
-    fetch('http://127.0.0.1:8000/delElection/?id=' + id + '&limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
-      .then(response => response.json())
-      .then(data => setAllData({ data: data.data, count: data.count }));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const data = postData
+        fetch(backend_url + 'delElection/?id=' + id + '&limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
+          .then(response => response.json())
+          .then(data => {
+            Swal.fire("Deleted!", "Your data has been deleted.", "success");
+            setAllData({ data: data.data, count: data.count })
+          });
+      }
+    });
+  }
+  const editRow = (row) => {
+    handleDetailShow();
+    setElection({ id: row.id, election_id: row.election_id, title: row.title, description: row.description, status: row.status, date: row.date, location: row.location, type: row.type, moderators: row.moderators })
   }
   const addElection = () => {
     const requestOptions = {
@@ -125,7 +174,7 @@ const ElectionLists = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(election)
     };
-    fetch('http://127.0.0.1:8000/addElection', requestOptions)
+    fetch(backend_url + 'addElection', requestOptions)
       .then(response => response.json())
       .then(data => {
         if (data.code - 200 === 0) {
@@ -135,20 +184,32 @@ const ElectionLists = () => {
       });
   }
   const updateElection = () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(election)
-    };
-    fetch('http://127.0.0.1:8000/updateElection', requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        if (data.code - 200 === 0) {
-          console.log("123123123");
-          getData(postData);
-          handleClose();
-        }
-      });
+    handleClose();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You update this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(election)
+        };
+        fetch(backend_url + 'updateElection', requestOptions)
+          .then(response => response.json())
+          .then(data => {
+            if (data.code - 200 === 0) {
+              getData(postData);
+              Swal.fire("Update!", "Your data has been updated.", "success");
+            }
+          });
+      }
+    });
   }
   const setElectionData = (event) => {
     setElection({ ...election, [event.target.name]: event.target.value });
@@ -286,7 +347,7 @@ const ElectionLists = () => {
                       data={changeData(allData.data)}
                       defaultSortField="ID"
                       striped
-                      defaultSortAsc={true}
+                      defaultSortAsc={false}
                       pagination={false}
                       onSort={tableAction}
                     />

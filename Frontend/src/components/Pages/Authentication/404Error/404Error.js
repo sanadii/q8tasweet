@@ -30,7 +30,7 @@ export const Error404 = () => {
             </h6>
             <Link
               className="btn btn-light"
-              to={`${process.env.PUBLIC_URL}/dashboard/dashboard-1/`}
+              to={`${process.env.PUBLIC_URL}/dashboard/`}
             >
               Back to Home
             </Link>

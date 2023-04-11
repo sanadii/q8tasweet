@@ -109,22 +109,8 @@ export const MENUITEMS = [
         active:false,
         children: [
           {
-            path: `${process.env.PUBLIC_URL}/user/admin`,
-            title: "admin",
-            type: "link",
-            active:false,
-            selected:false,
-          },
-          {
-            path: `${process.env.PUBLIC_URL}/elements/candidate`,
-            title: "candidate",
-            type: "link",
-            active:false,
-            selected:false,
-          },
-          {
-            path: `${process.env.PUBLIC_URL}/elements/supervisor`,
-            title: "supervisor",
+            path: `${process.env.PUBLIC_URL}/user/list`,
+            title: "User",
             type: "link",
             active:false,
             selected:false,

@@ -26,14 +26,14 @@ const Sidebar = () => {
     return () => {
       mainContent.removeEventListener('click', mainContentClickFn);
     }
-  },[location])
+  }, [location])
 
   // location
   useEffect(() => {
     if (document.body.classList.contains('horizontal') && window.innerWidth >= 992) {
       clearMenuActive();
     }
-  
+
   }, []);
 
   //  In Horizontal When we click the body it should we Closed using in useEfffect Refer line No:16
@@ -50,8 +50,8 @@ const Sidebar = () => {
           mainlevel.Items.filter((items) => {
             items.active = false;
             items.selected = false;
-            if (location.pathname === '/nowa/preview/' || location.pathname === '/nowa/preview/') {
-              location.pathname = '/nowa/preview/dashboard/dashboard-1/';
+            if (location.pathname === '/' || location.pathname === '/') {
+              location.pathname = '/dashboard';
             }
             if (location.pathname === items.path + '/') {
               items.active = true;
@@ -94,12 +94,11 @@ const Sidebar = () => {
     }
   }
   function toggleSidemenu(item) {
-    
-      if (
-        !document.body.classList.contains("horizontalmenu-hover") ||
-        window.innerWidth < 992
-      )
-  {
+
+    if (
+      !document.body.classList.contains("horizontalmenu-hover") ||
+      window.innerWidth < 992
+    ) {
       // To show/hide the menu
       if (!item.active) {
         menuitems.filter(mainlevel => {
@@ -213,7 +212,7 @@ const Sidebar = () => {
           style={{ position: "absolute" }}
         >
           <div className="main-sidebar-header active">
-            <NavLink className="header-logo active" to={`${process.env.PUBLIC_URL}/dashboard/dashboard-1`}>
+            <NavLink className="header-logo active" to={`${process.env.PUBLIC_URL}/dashboard`}>
               <img
                 src={require("../../assets/img/brand/logo.png")}
                 className="main-logo  desktop-logo"

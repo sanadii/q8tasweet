@@ -26,7 +26,7 @@ const Error500 = () => (
           <h6 className="tx-white-6">
             You may have mistyped the address or the page may have moved.
           </h6>
-          <Link className="btn btn-light" to={`${process.env.PUBLIC_URL}/dashboard/dashboard-1`}>
+          <Link className="btn btn-light" to={`${process.env.PUBLIC_URL}/dashboard/`}>
             Back to Home
           </Link>
         </div>
