@@ -20,7 +20,7 @@ const UserList = React.lazy(() => import("./components/Pages/User/List"));
 const ElectionLists = React.lazy(() => import("./components/Pages/Election/Lists"));
 
 const Error404 = React.lazy(() => import("./components/Pages/Authentication/404Error/404Error"));
-const AuthLogin = React.lazy(() => import("./Auth/Login"));
+const AuthLogin = React.lazy(() => import("./components/Pages/Auth/Login"));
 const AuthSignup = React.lazy(() => import("./Authentication/Signup"))
 //Form
 const root = ReactDOM.createRoot(document.getElementById("root"));
