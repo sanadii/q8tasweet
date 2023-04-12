@@ -14,6 +14,7 @@ const UserList = () => {
     const columns = [
         {
             name: "No",
+            width:"60px",
             selector: (row) => [row.no],
             className: 'table-column-center'
         },
@@ -73,6 +74,7 @@ const UserList = () => {
         },
         {
             name: "Action",
+            width:"100px",
             cell: (row) => (
                 <span className="" style={{ width: "100%", textAlign: "end" }}>
                     <OverlayTrigger placement="top" overlay={<Tooltip>Edit</Tooltip>}>
@@ -323,9 +325,15 @@ const UserList = () => {
                                 <FormGroup className="form-group">
                                     <Form.Control type="text" className="form-control" id="username" placeholder="username" name="username" value={dataValue.username} onChange={(event) => setPropsValue(event)} />
                                 </FormGroup>
-                                <FormGroup className="form-group">
-                                    <Form.Control type="password" className="form-control" id="password" placeholder="password" name="password" value={dataValue.password} onChange={(event) => setPropsValue(event)} />
-                                </FormGroup>
+                                {
+                                    show.mode - 1 === 0 ?
+                                    <FormGroup className="form-group">
+                                        <Form.Control type="password" className="form-control" id="password" placeholder="password" name="password" value={dataValue.password} onChange={(event) => setPropsValue(event)} />
+                                    </FormGroup>
+                                    :
+                                    <></>
+                                }
+                                
                                 <FormGroup className="form-group">
                                     <select id="election_option" placeholder="election_option" name="election_option" className="form-control select2 form-select" value={dataValue.election_option?dataValue.election_option:0} onChange={(event) => setPropsValue(event)} >
                                          <option value={0} key={""}>No rank</option>

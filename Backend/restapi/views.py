@@ -15,10 +15,9 @@ AUTH_SIZE = 16
 
 @api_view(['GET'])
 def getMenu(request):
-    if request.method == 'GET':
-        menus = TbMenu.objects.all()
-        menus_serializer = menuSerializer(menus, many=True)
-        return JsonResponse({"data": menus_serializer.data}, safe=False)
+    menus = TbMenu.objects.all()
+    menus_serializer = menuSerializer(menus, many=True)
+    return JsonResponse({"data": menus_serializer.data}, safe=False)
 
 @api_view(['POST'])
 def addMenu(request):

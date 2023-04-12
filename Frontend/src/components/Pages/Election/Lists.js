@@ -12,6 +12,7 @@ const ElectionLists = () => {
   const columns = [
     {
       name: "No",
+      width:"60px",
       selector: (row) => [row.no],
       className: 'table-column-center'
     },
@@ -66,6 +67,7 @@ const ElectionLists = () => {
     },
     {
       name: "Action",
+      width:"100px",
       cell: (row) => (
         <span className="" style={{ width: "100%", textAlign: "end" }}>
           {

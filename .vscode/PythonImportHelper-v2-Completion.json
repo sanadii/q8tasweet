@@ -122,6 +122,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -201,6 +217,15 @@
         "description": "rest_framework.decorators",
         "isExtraImport": true,
         "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
         "documentation": {}
     },
     {
@@ -447,6 +472,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Backend.restapi.migrations.0003_auto_20230410_1419",
+        "description": "Backend.restapi.migrations.0003_auto_20230410_1419",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('restapi', '0002_auto_20200726_0425'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='TbElections',\n            fields=[\n                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('election_id', models.IntegerField(blank=True, null=True)),",
+        "detail": "Backend.restapi.migrations.0003_auto_20230410_1419",
+        "documentation": {}
+    },
+    {
         "label": "RestapiConfig",
         "kind": 6,
         "importPath": "Backend.restapi.apps",
@@ -496,7 +530,7 @@
         "kind": 6,
         "importPath": "Backend.restapi.models",
         "description": "Backend.restapi.models",
-        "peekOfCode": "class TbPermission(models.Model):\n    name = models.CharField(max_length=255, blank=True, null=True)\n    menu = models.CharField(max_length=255, blank=True, null=True)\n    description = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)\n    class Meta:",
+        "peekOfCode": "class TbPermission(models.Model):\n    name = models.CharField(max_length=255, blank=True, null=True)\n    description = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)\n    class Meta:\n        managed = False",
         "detail": "Backend.restapi.models",
         "documentation": {}
     },
@@ -546,6 +580,15 @@
         "documentation": {}
     },
     {
+        "label": "TbPermissionMenu",
+        "kind": 6,
+        "importPath": "Backend.restapi.models",
+        "description": "Backend.restapi.models",
+        "peekOfCode": "class TbPermissionMenu(models.Model):\n    permissionid = models.IntegerField(db_column='permissionId', blank=True, null=True)\n    menuid = models.IntegerField(db_column='menuId', blank=True, null=True)\n    value = models.CharField(max_length=255, blank=True, null=True)\n    label = models.CharField(max_length=255, blank=True, null=True)\n    class Meta:\n        managed = False\n        db_table = 'tb_permissionmenu'",
+        "detail": "Backend.restapi.models",
+        "documentation": {}
+    },
+    {
         "label": "userSerializer",
         "kind": 6,
         "importPath": "Backend.restapi.serializers",
@@ -559,7 +602,7 @@
         "kind": 6,
         "importPath": "Backend.restapi.serializers",
         "description": "Backend.restapi.serializers",
-        "peekOfCode": "class electionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbElections\n        fields = \"__all__\"\nclass menuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbMenu\n        fields = \"__all__\"",
+        "peekOfCode": "class electionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbElections\n        fields = \"__all__\"\nclass menuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbMenu\n        fields = \"__all__\"\nclass permissionSerializer(serializers.ModelSerializer):\n    class Meta:",
         "detail": "Backend.restapi.serializers",
         "documentation": {}
     },
@@ -568,7 +611,43 @@
         "kind": 6,
         "importPath": "Backend.restapi.serializers",
         "description": "Backend.restapi.serializers",
-        "peekOfCode": "class menuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbMenu\n        fields = \"__all__\"",
+        "peekOfCode": "class menuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbMenu\n        fields = \"__all__\"\nclass permissionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermission\n        fields = \"__all__\"\nclass permissionMenuSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "Backend.restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "permissionSerializer",
+        "kind": 6,
+        "importPath": "Backend.restapi.serializers",
+        "description": "Backend.restapi.serializers",
+        "peekOfCode": "class permissionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermission\n        fields = \"__all__\"\nclass permissionMenuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermissionMenu\n        fields = \"__all__\"\nclass roleSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "Backend.restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "permissionMenuSerializer",
+        "kind": 6,
+        "importPath": "Backend.restapi.serializers",
+        "description": "Backend.restapi.serializers",
+        "peekOfCode": "class permissionMenuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermissionMenu\n        fields = \"__all__\"\nclass roleSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUsersRole\n        fields = \"__all__\"\nclass rankSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "Backend.restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "roleSerializer",
+        "kind": 6,
+        "importPath": "Backend.restapi.serializers",
+        "description": "Backend.restapi.serializers",
+        "peekOfCode": "class roleSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUsersRole\n        fields = \"__all__\"\nclass rankSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUserRank\n        fields = \"__all__\"",
+        "detail": "Backend.restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "rankSerializer",
+        "kind": 6,
+        "importPath": "Backend.restapi.serializers",
+        "description": "Backend.restapi.serializers",
+        "peekOfCode": "class rankSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUserRank\n        fields = \"__all__\"",
         "detail": "Backend.restapi.serializers",
         "documentation": {}
     },
@@ -577,17 +656,8 @@
         "kind": 5,
         "importPath": "Backend.restapi.urls",
         "description": "Backend.restapi.urls",
-        "peekOfCode": "urlpatterns = [\n    url(r'getUser', views.getUser),\n    #\n    url(r'getElection/', views.getElection),\n    url(r'delElection/', views.delElection),\n    url(r'addElection', views.addElection),\n    url(r'updateElection', views.updateElection),\n    #\n    url(r'getMenu', views.getMenu),\n]",
+        "peekOfCode": "urlpatterns = [\n    #\n    url(r'getElection/', views.getElection),\n    url(r'delElection/', views.delElection),\n    url(r'addElection', views.addElection),\n    url(r'updateElection', views.updateElection),\n    #\n    url(r'getMenu', views.getMenu),\n    url(r'delMenu/', views.delMenu),\n    url(r'addMenu', views.addMenu),",
         "detail": "Backend.restapi.urls",
-        "documentation": {}
-    },
-    {
-        "label": "getUser",
-        "kind": 2,
-        "importPath": "Backend.restapi.views",
-        "description": "Backend.restapi.views",
-        "peekOfCode": "def getUser(request):\n    if request.method == 'GET':\n        users = TbUsers.objects.all()\n        # number = request.GET.get('number', None)\n        users_serializer = userSerializer(users, many=True)\n        return JsonResponse(users_serializer.data, safe=False)\n@api_view(['GET'])\ndef getMenu(request):\n    if request.method == 'GET':\n        menus = TbMenu.objects.all()",
-        "detail": "Backend.restapi.views",
         "documentation": {}
     },
     {
@@ -595,7 +665,25 @@
         "kind": 2,
         "importPath": "Backend.restapi.views",
         "description": "Backend.restapi.views",
-        "peekOfCode": "def getMenu(request):\n    if request.method == 'GET':\n        menus = TbMenu.objects.all()\n        # number = request.GET.get('number', None)\n        menus_serializer = menuSerializer(menus, many=True)\n        return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['GET'])\ndef getElection(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))",
+        "peekOfCode": "def getMenu(request):\n    menus = TbMenu.objects.all()\n    menus_serializer = menuSerializer(menus, many=True)\n    return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['POST'])\ndef addMenu(request):\n    data = json.loads(request.body)\n    data_data = TbMenu(name=data[\"name\"], url=data[\"url\"], parentid=data[\"parentId\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addMenu",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def addMenu(request):\n    data = json.loads(request.body)\n    data_data = TbMenu(name=data[\"name\"], url=data[\"url\"], parentid=data[\"parentId\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef delMenu(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    TbMenu.objects.filter(id=id).delete()",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delMenu",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def delMenu(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    TbMenu.objects.filter(id=id).delete()\n    menus = TbMenu.objects.all()\n    menus_serializer = menuSerializer(menus, many=True)\n    return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['GET'])\ndef getElection(request):\n    queryprms = request.GET",
         "detail": "Backend.restapi.views",
         "documentation": {}
     },
@@ -632,6 +720,195 @@
         "importPath": "Backend.restapi.views",
         "description": "Backend.restapi.views",
         "peekOfCode": "def updateElection(request):\n    data = json.loads(request.body)\n    election = TbElections.objects.raw(\n        'select * from tb_elections where id = ' + str(data['id']))[0]\n    election.election_id = data['election_id']\n    election.title = data['title']\n    election.description = data['description']\n    election.status = data['status']\n    election.date = data['date']\n    election.location = data['location']",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getPermission",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getPermission(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbPermission.objects.raw(\n        'select * from tb_permission where del_flag = 0 and name rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = permissionSerializer(data_data, many=True)",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllPermission",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getAllPermission(request):\n    data_data = TbPermission.objects.all()\n    data_serializer = permissionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['POST'])\ndef addPermission(request):\n    data = json.loads(request.body)\n    data_data = TbPermission(name=data[\"name\"],description=data[\"description\"], del_flag=0)\n    data_data.save()\n    data_now = TbPermission.objects.raw('select * from tb_permission where name = \"' + data[\"name\"] + '\" and description = \"' + data[\"description\"] + '\"')[0]",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addPermission",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def addPermission(request):\n    data = json.loads(request.body)\n    data_data = TbPermission(name=data[\"name\"],description=data[\"description\"], del_flag=0)\n    data_data.save()\n    data_now = TbPermission.objects.raw('select * from tb_permission where name = \"' + data[\"name\"] + '\" and description = \"' + data[\"description\"] + '\"')[0]\n    for x in data[\"menu\"]:\n        data_row = TbPermissionMenu(permissionid = data_now.id, menuid = x['menuId'], value = x['value'], label = x['label'])\n        data_row.save()\n    return JsonResponse({\"data\": \"\", \"count\": 0, \"code\": 200}, safe=False)\n@ api_view(['POST'])",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updatePermission",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def updatePermission(request):\n    data = json.loads(request.body)\n    data_data = TbPermission.objects.raw(\n        'select * from tb_permission where id = ' + str(data['id']))[0]\n    data_data.name = data['name']\n    data_data.description = data['description']\n    data_data.save()\n    TbPermissionMenu.objects.filter(permissionid=data['id']).delete()\n    for x in data[\"menu\"]:\n        data_row = TbPermissionMenu(permissionid = data['id'], menuid = x['menuId'], value = x['value'], label = x['label'])",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delPermission",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def delPermission(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    TbPermission.objects.filter(id=id).delete()\n    TbPermissionMenu.objects.filter(permissionid=id).delete()",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getRole",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getRole(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbUsersRole.objects.raw(\n        'select * from tb_users_role where del_flag = 0 and name rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = roleSerializer(data_data, many=True)",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addRole",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def addRole(request):\n    data = json.loads(request.body)\n    data_data = TbUsersRole(name=data[\"name\"],permissionid=data[\"permissionid\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateRole(request):\n    data = json.loads(request.body)\n    data_data = TbUsersRole.objects.raw(\n        'select * from tb_users_role where id = ' + str(data['id']))[0]",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateRole",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def updateRole(request):\n    data = json.loads(request.body)\n    data_data = TbUsersRole.objects.raw(\n        'select * from tb_users_role where id = ' + str(data['id']))[0]\n    data_data.name = data['name']\n    data_data.permissionid = data['permissionid']\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef delRole(request):",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delRole",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def delRole(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    TbUsersRole.objects.filter(id=id).delete()\n    data_data = TbUsersRole.objects.raw(",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getRank",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getRank(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbUserRank.objects.raw(\n        'select * from tb_user_rank where del_flag = 0 and name rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = rankSerializer(data_data, many=True)",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addRank",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def addRank(request):\n    data = json.loads(request.body)\n    data_data = TbUserRank(name=data[\"name\"],permissionid=data[\"permissionid\"],parentid=data[\"parentid\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateRank(request):\n    data = json.loads(request.body)\n    data_data = TbUserRank.objects.raw(\n        'select * from tb_user_rank where id = ' + str(data['id']))[0]",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateRank",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def updateRank(request):\n    data = json.loads(request.body)\n    data_data = TbUserRank.objects.raw(\n        'select * from tb_user_rank where id = ' + str(data['id']))[0]\n    data_data.name = data['name']\n    data_data.permissionid = data['permissionid']\n    data_data.parentid = data['parentid']\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delRank",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def delRank(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    TbUserRank.objects.filter(id=id).delete()\n    data_data = TbUserRank.objects.raw(",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllRank",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getAllRank(request):\n    data_data = TbUserRank.objects.all()\n    data_serializer = rankSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data,\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getAllRole(request):\n    data_data = TbUsersRole.objects.all()\n    data_serializer = roleSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data,\"code\": 200}, safe=False)\n@api_view(['GET'])",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllRole",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getAllRole(request):\n    data_data = TbUsersRole.objects.all()\n    data_serializer = roleSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data,\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getUser(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getUser",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def getUser(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where del_flag = 0 and (fname rlike \"' + keyword + '\" or lname rlike \"' + keyword + '\" or cid rlike \"' + keyword + '\" or mobile rlike \"' + keyword + '\") order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = (userSerializer(data_data, many=True))",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addUser",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def addUser(request): \n    data = json.loads(request.body)\n    password = hashlib.sha1(data[\"password\"].encode('utf-8')).hexdigest()\n    data_data = TbUsers(fname=data[\"fname\"],lname=data[\"lname\"],role=data[\"role\"],cid=data[\"cid\"],mobile=data[\"mobile\"],email=data[\"email\"],username=data[\"username\"],password=password,election_option=data[\"election_option\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateUser(request):\n    data = json.loads(request.body)\n    data_data = TbUsers.objects.raw(",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateUser",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def updateUser(request):\n    data = json.loads(request.body)\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where id = ' + str(data['id']))[0]\n    data_data.fname = data['fname']\n    data_data.lname = data['lname']\n    data_data.role = data['role']\n    data_data.cid = data['cid']\n    data_data.mobile = data['mobile']\n    data_data.email = data['email']",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delUser",
+        "kind": 2,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "def delUser(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_del = TbUsers.objects.raw('select * from tb_elections where id = ' + id)[0]\n    data_del.del_flag = 1",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "SECRET_KEY = b'pseudorandomly generated server secret key'\nAUTH_SIZE = 16\n@api_view(['GET'])\ndef getMenu(request):\n    menus = TbMenu.objects.all()\n    menus_serializer = menuSerializer(menus, many=True)\n    return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['POST'])\ndef addMenu(request):\n    data = json.loads(request.body)",
+        "detail": "Backend.restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_SIZE",
+        "kind": 5,
+        "importPath": "Backend.restapi.views",
+        "description": "Backend.restapi.views",
+        "peekOfCode": "AUTH_SIZE = 16\n@api_view(['GET'])\ndef getMenu(request):\n    menus = TbMenu.objects.all()\n    menus_serializer = menuSerializer(menus, many=True)\n    return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['POST'])\ndef addMenu(request):\n    data = json.loads(request.body)\n    data_data = TbMenu(name=data[\"name\"], url=data[\"url\"], parentid=data[\"parentId\"], del_flag=0)",
         "detail": "Backend.restapi.views",
         "documentation": {}
     },

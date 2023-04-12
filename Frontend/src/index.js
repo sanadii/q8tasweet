@@ -19,7 +19,9 @@ const RankList = React.lazy(() => import("./components/Pages/Authority/Rank"));
 const UserList = React.lazy(() => import("./components/Pages/User/List"));
 const ElectionLists = React.lazy(() => import("./components/Pages/Election/Lists"));
 
-const Error404 = React.lazy(() =>  import("./components/Pages/Authentication/404Error/404Error"));
+const Error404 = React.lazy(() => import("./components/Pages/Authentication/404Error/404Error"));
+const AuthLogin = React.lazy(() => import("./Auth/Login"));
+const AuthSignup = React.lazy(() => import("./Authentication/Signup"))
 //Form
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -28,6 +30,17 @@ root.render(
     <BrowserRouter>
       <React.Suspense fallback={<Loader />}>
         <Routes>
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Auth />}>
+            <Route index element={<AuthLogin />} />
+            <Route
+              path={`${process.env.PUBLIC_URL}/login`}
+              element={<AuthLogin />}
+            />
+            <Route
+              path={`${process.env.PUBLIC_URL}/signup`}
+              element={<AuthSignup />}
+            />
+          </Route>
           <Route path={`${process.env.PUBLIC_URL}/`} element={<App />}>
             <Route
               path={`${process.env.PUBLIC_URL}/dashboard`}
