@@ -31,7 +31,7 @@ root.render(
       <React.Suspense fallback={<Loader />}>
         <Routes>
           <Route path={`${process.env.PUBLIC_URL}/`} element={<Auth />}>
-            <Route index element={<AuthLogin />} />
+            {/* <Route index element={<AuthLogin />} /> */}
             <Route
               path={`${process.env.PUBLIC_URL}/login`}
               element={<AuthLogin />}
