@@ -1,4 +1,4 @@
-export const backend_url = "http://127.0.0.1:8000/"
+export const backend_url = "http://54.166.11.73:8000/"
 
 export const election_status = [
     { key: 0, value: "created", color: "cyan" },
