@@ -1,10 +1,8 @@
-import { createStore } from "redux";
-import rootred from "../reducers/main";
+import { legacy_createStore as createStore, compose } from 'redux';
 
+import mainReducer from '../reducers/main';
 
-const store = createStore(
-    rootred
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const middlewares = [thunk];
 
-
-export default store;
+export const store = createStore(mainReducer, composeEnhancers());

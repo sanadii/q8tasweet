@@ -12,6 +12,9 @@ const Dashboard = React.lazy(() =>
   import("./components/Dashboard/Dashboard-1/Dashboard")
 );
 //App
+const ElectionsDash = React.lazy(() => import("./components/Pages/Election/Dashboard"));
+const ElectionsDetail = React.lazy(() => import("./components/Pages/Election/Detail"));
+const UserDetailIndex = React.lazy(() => import("./components/Pages/User/Detail/index"));
 const MenuLists = React.lazy(() => import("./components/Pages/System/Menu"));
 const PermissionList = React.lazy(() => import("./components/Pages/System/Permission"));
 const RoleList = React.lazy(() => import("./components/Pages/Authority/Role"));
@@ -42,6 +45,18 @@ root.render(
             />
           </Route>
           <Route path={`${process.env.PUBLIC_URL}/`} element={<App />}>
+            <Route
+              path={`${process.env.PUBLIC_URL}/elections`}
+              element={<ElectionsDash />}
+            />
+            <Route
+              path={`${process.env.PUBLIC_URL}/elections/:id`}
+              element={<ElectionsDetail />}
+            />
+            <Route
+              path={`${process.env.PUBLIC_URL}/elections/:id/:userid`}
+              element={<UserDetailIndex />}
+            />
             <Route
               path={`${process.env.PUBLIC_URL}/dashboard`}
               element={<Dashboard />}

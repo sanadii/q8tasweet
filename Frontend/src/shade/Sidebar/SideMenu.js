@@ -17,14 +17,32 @@ export const MENUITEMS = [
         ),
         path: `${process.env.PUBLIC_URL}/dashboard`,
         type: "link",
-        selected:false,
-        active:false,
+        selected: false,
+        active: false,
       },
     ],
   },
   {
     menutitle: "Management",
     Items: [
+      {
+        title: "Elections",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"></path>
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/elections`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
       {
         title: "System Manage",
         icon: (
@@ -39,21 +57,21 @@ export const MENUITEMS = [
           </svg>
         ),
         type: "sub",
-        selected:false,
-        active:false,
+        selected: false,
+        active: false,
         children: [
           {
             path: `${process.env.PUBLIC_URL}/system/menu`,
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
             title: "Menu",
           },
           {
             path: `${process.env.PUBLIC_URL}/system/permission`,
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
             title: "Permission",
           },
         ],
@@ -72,22 +90,22 @@ export const MENUITEMS = [
           </svg>
         ),
         type: "sub",
-        selected:false,
-        active:false,
+        selected: false,
+        active: false,
         children: [
           {
             path: `${process.env.PUBLIC_URL}/authority/rank`,
             title: "rank",
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
           },
           {
             path: `${process.env.PUBLIC_URL}/authority/role`,
             title: "role",
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
           },
         ],
       },
@@ -105,15 +123,15 @@ export const MENUITEMS = [
           </svg>
         ),
         type: "sub",
-        selected:false,
-        active:false,
+        selected: false,
+        active: false,
         children: [
           {
             path: `${process.env.PUBLIC_URL}/user/list`,
             title: "User",
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
           },
         ],
       },
@@ -131,22 +149,22 @@ export const MENUITEMS = [
           </svg>
         ),
         type: "sub",
-        selected:false,
-        active:false,
+        selected: false,
+        active: false,
         children: [
           {
             path: `${process.env.PUBLIC_URL}/election/list`,
             title: "election list",
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
           },
           {
             path: `${process.env.PUBLIC_URL}/election/check`,
             title: "check list",
             type: "link",
-            active:false,
-            selected:false,
+            active: false,
+            selected: false,
           },
         ],
       },

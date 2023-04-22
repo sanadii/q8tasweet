@@ -1,13 +1,17 @@
+/* eslint-disable array-callback-return */
 import React from 'react';
-import { Button, Row, Col, Card, Form, FormGroup, Modal, Table } from "react-bootstrap";
+import { Button, Row, Col, Card, Form, FormGroup, Modal } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import moment from 'moment';
-import { election_status, backend_url } from "../../Constant/Config"
 import { Tag } from 'antd';
 import Swal from "sweetalert2";
+import Dropzone from "react-dropzone";
+import ImageTableComponent from '../../Image/ImageTableComponent';
+import ImageDashComponent from '../../Image/ImageDashComponent';
+import { election_status, backend_url } from "../../Constant/Config"
 const ElectionLists = () => {
   const columns = [
     {
@@ -17,10 +21,12 @@ const ElectionLists = () => {
       className: 'table-column-center'
     },
     {
-      name: "ID",
-      title: "election_id",
-      selector: (row) => [row.election_id],
-      // sortable: true,
+      name: "",
+      title: "image",
+      selector: (row) => [row.image],
+      cell: row => {
+        return <ImageTableComponent imagePath={row.image} />
+      }
     },
     {
       name: "Title",
@@ -131,7 +137,7 @@ const ElectionLists = () => {
   const [allData, setAllData] = React.useState({ data: [], count: 0 });
   const [election, setElection] = React.useState({
     id: 0,
-    election_id: "",
+    image: "",
     title: "",
     description: "",
     status: 0,
@@ -168,7 +174,7 @@ const ElectionLists = () => {
   }
   const editRow = (row) => {
     handleDetailShow();
-    setElection({ id: row.id, election_id: row.election_id, title: row.title, description: row.description, status: row.status, date: row.date, location: row.location, type: row.type, moderators: row.moderators })
+    setElection({ id: row.id, image: row.image, title: row.title, description: row.description, status: row.status, date: row.date, location: row.location, type: row.type, moderators: row.moderators })
   }
   const addElection = () => {
     const requestOptions = {
@@ -254,6 +260,24 @@ const ElectionLists = () => {
     data.pagenum = 1;
     getData(data);
   };
+  const upLoadImage = (imageData) => {
+    const formData = new FormData();
+    formData.append("image", imageData);
+    fetch(backend_url + 'upLoadImage', {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setElection({ ...election, image: data.url })
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+  const handleImageChange = (event) => {
+    upLoadImage(event[0]);
+  };
   return (
     <div>
       {/*   <!-- breadcrumb --> */}
@@ -276,7 +300,24 @@ const ElectionLists = () => {
             <Modal.Body className="modal-body"> <div className="p-4">
               <Form className="form-horizontal">
                 <FormGroup className="form-group">
-                  <Form.Control type="number" className="form-control" placeholder="election id" name="election_id" value={election.election_id} onChange={(event) => setElectionData(event)} />
+                  <Dropzone
+                    onDrop={(event) => {
+                      handleImageChange(event);
+                    }}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      <div className="dropzone dz-clickable">
+                        <div className="dz-message needsclick" {...getRootProps()}>
+                          {
+                            election.image ?
+                              <ImageDashComponent imagePath={election.image} />
+                              :
+                              <img src={require("../../../assets/img/defaultImage.png")} alt="Responsive" className="card-img-top w-100" style={{ height: "200px" }}></img>
+                          }
+                        </div>
+                      </div>
+                    )}
+                  </Dropzone>
                 </FormGroup>
                 <FormGroup className="form-group">
                   <Form.Control type="text" className="form-control" id="title" placeholder="title" name="title" value={election.title} onChange={(event) => setElectionData(event)} />
@@ -295,13 +336,25 @@ const ElectionLists = () => {
                     </FormGroup> : <></>
                 }
                 <FormGroup className="form-group">
-                  <Form.Control type="date" className="form-control" id="date" placeholder="date" name="date" value={election.date} onChange={(event) => setElectionData(event)} />
+                  <Form.Control type="date" className="form-control" id="date" placeholder="date" name="date" value={moment(election.date).format("YYYY-MM-DD")} onChange={(event) => setElectionData(event)} />
                 </FormGroup>
                 <FormGroup className="form-group">
                   <Form.Control type="text" className="form-control" id="location" placeholder="location" name="location" value={election.location} onChange={(event) => setElectionData(event)} />
                 </FormGroup>
                 <FormGroup className="form-group">
-                  <Form.Control type="text" className="form-control" id="type" placeholder="type" name="type" value={election.type} onChange={(event) => setElectionData(event)} />
+                  <select
+                    className="form-control"
+                    placeholder="Election Location"
+                    id="type"
+                    name="type"
+                    value={election.type}
+                    onChange={(event) => setElectionData(event)}
+                  >
+                    <option value="">-- Select an option --</option>
+                    <option value="parties">Party Only</option>
+                    <option value="candidates">Candidate Only</option>
+                    <option value="both">Both Parties and Candidates</option>
+                  </select>
                 </FormGroup>
                 <FormGroup className="form-group">
                   <Form.Control type="text" className="form-control" id="moderators" placeholder="moderators" name="moderators" value={election.moderators} onChange={(event) => setElectionData(event)} />

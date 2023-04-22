@@ -4,14 +4,56 @@ from django.shortcuts import render
 # Create your views here.
 from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
-import hashlib
 
+import hashlib
+import os
+import base64
+import random
+import string
+
+from django.conf import settings
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from django.core.serializers import serialize
+from django.views.static import serve
+from django.http import FileResponse
+from django.db import connection
 
 from .serializers import *
 from .models import *
 
 SECRET_KEY = b'pseudorandomly generated server secret key'
 AUTH_SIZE = 16
+
+@api_view(['POST'])
+def upLoadImage(request):
+    if request.method == 'POST':
+        image = request.FILES.get('image')
+        letters = string.ascii_lowercase
+        result_str = ''.join(random.choice(letters) for i in range(20))
+        if image:
+            with open(os.path.join(settings.MEDIA_ROOT, result_str + image.name), 'wb+') as destination:
+                for chunk in image.chunks():
+                    destination.write(chunk)
+            return JsonResponse({'success': True, 'url': result_str + image.name})
+    return JsonResponse({'success': False})
+
+@api_view(['GET'])
+def getImage(request):
+    queryprms = request.GET
+    path = queryprms.get('imagePath', 1)
+    image_path = os.path.join(settings.MEDIA_ROOT, f'{path}')
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(open(image_path, "rb").read())
+    return JsonResponse({'data' : encoded_string.decode("utf-8")})
+    # print(base64.b64encode(open(image_path, "rb").read()))
+    # try:
+    #     # Construct the full path to the image file
+    #     full_path = os.path.join(settings.MEDIA_ROOT, path)
+    #     # Return the image file as a response
+    #     return serve(request, os.path.basename(full_path), os.path.dirname(full_path))
+    # except:
+    #     return JsonResponse({'success': path})
 
 @api_view(['GET'])
 def getMenu(request):
@@ -52,6 +94,115 @@ def getElection(request):
         'select id, count(*) as count from tb_elections where del_flag = 0 and title rlike "' + keyword + '"')
     return JsonResponse({"data": election_serializer.data, "count": election_count[0].count, "code": 200}, safe=False)
 
+@api_view(['GET'])
+def getAllElection(request):
+    data_data = TbElections.objects.all()
+    data_serializer = electionSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getPrev5Election(request):
+    data_data = TbElections.objects.raw('select * from tb_elections where del_flag = 0 and date < SYSDATE() order by date desc limit 5')
+    data_serializer = electionSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getUpElection(request):
+    data_data = TbElections.objects.raw('select * from tb_elections where del_flag = 0 and date-0 >= FLOOR((SYSDATE()-0)/1000000)')
+    data_serializer = electionSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data, "code": 200}, safe=False)
+
+@api_view(['POST'])
+def getIdUser(request):
+    data = json.loads(request.body)
+    data_data = TbUsers.objects.raw('select id from tb_users where fname = "' + data["fname"] + '" and lname = "' + data["lname"] + '" and cid = "' + str(data["cid"]) + '" and username = "' + data["username"] + '"')
+    return JsonResponse({"data": data_data[0].id, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getUserElection(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_data = TbUsers.objects.raw('select * from tb_users where del_flag = 0 and election_option = ' + id)
+    data_serializer = userSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getCandidateElection(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_data = TbUsers.objects.raw('select * from tb_users where del_flag = 0 and rank = 2 and election_option = ' + id)
+    data_serializer = userSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getElectionId(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_data = TbElections.objects.raw('select * from tb_elections where id = ' + id)
+    data_serializer = electionSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data[0], "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getUserId(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_data = TbUsers.objects.raw('select * from tb_users where id = ' + id)
+    data_serializer = userSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data[0], "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getCountCandidate(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_count = TbUsers.objects.raw("select id, count(*) as count from tb_users where del_flag = 0 and election_option = " + id + " and rank = (select id from tb_user_rank where name = 'candidate')")
+    data_total = TbUsers.objects.raw("select id, count(*) as count from tb_users where del_flag = 0 and rank = (select id from tb_user_rank where name = 'candidate')")
+    return JsonResponse({"data": { 'count': data_count[0].count, 'total': data_total[0].count}, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getUserTeamCount(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    cursor = connection.cursor()
+    cursor.execute("select id,a.rank, b.name, a.count from (select u.rank, count(*) as count from (select teamuser_id from tb_team_members where candidate_id = " + id +" and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id group by u.rank) as a join (select * from tb_user_rank where del_flag = 0) as b on a.rank = b.id", None)
+    objs = cursor.fetchall()
+    json_data = []
+    for obj in objs:
+        json_data.append({"id" : obj[0], "rank" : obj[1], "name" : obj[2], "count" : obj[3]})
+    return JsonResponse({"data": json_data, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getGuaranteesCount(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    eid= queryprms.get('eid', 1)
+    data_guarantees = TbGuarantees.objects.raw("select id, count(*) as count from tb_guarantees where del_flag = 0 and user_id = " + id + " and election_id = " + eid)
+    data_guarantees_all = TbGuarantees.objects.raw("select id, count(*) as count from tb_guarantees where del_flag = 0 and election_id = " + eid)
+    return JsonResponse({"data": { 'all': data_guarantees_all[0].count, 'my': data_guarantees[0].count}, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getElectionCount(request):
+    queryprms = request.GET
+    id= queryprms.get ('id', 1)
+    data_users = TbUsers.objects.raw("select id, count(*) as count from tb_users where del_flag = 0 and election_option = " + id)
+    data_guarantees = TbGuarantees.objects.raw("select id, count(*) as count from tb_guarantees where del_flag = 0 and election_id = " + id)
+    data_others = TbUsers.objects.raw("select id, count(*) as count from tb_users where del_flag = 0 and election_option != " + id)
+    return JsonResponse({"data": { 'users': data_users[0].count, 'guarantees': data_guarantees[0].count, 'others': data_others[0].count}, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getElectionCandidate(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_data = TbUsers.objects.raw("select * from tb_users where del_flag = 0 and election_option = " + id + " and rank = (select id from tb_user_rank where name = 'candidate')")
+    data_serializer = userSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getElectionCandidateId(request):
+    queryprms = request.GET
+    id= queryprms.get('id', 1)
+    data_data = TbUsers.objects.raw("select * from tb_users where id = " + id)
+    data_serializer = userSerializer(data_data, many=True)
+    return JsonResponse({"data": data_serializer.data[0], "code": 200}, safe=False)
 
 @api_view(['GET'])
 def delElection(request):
@@ -77,7 +228,7 @@ def delElection(request):
 @api_view(['POST'])
 def addElection(request):
     data = json.loads(request.body)
-    election = TbElections(election_id=data["election_id"], title=data["title"], description=data["description"], status=data["status"],
+    election = TbElections(image=data["image"], title=data["title"], description=data["description"], status=data["status"],
                            date=data["date"], location=data["location"], type=data["type"], moderators=data["moderators"], del_flag=0)
     election.save()
     return JsonResponse({"data": "", "count": 0, "code": 200}, safe=False)
@@ -88,7 +239,7 @@ def updateElection(request):
     data = json.loads(request.body)
     election = TbElections.objects.raw(
         'select * from tb_elections where id = ' + str(data['id']))[0]
-    election.election_id = data['election_id']
+    election.image = data['image']
     election.title = data['title']
     election.description = data['description']
     election.status = data['status']
@@ -298,7 +449,8 @@ def getUser(request):
 def addUser(request): 
     data = json.loads(request.body)
     password = hashlib.sha1(data["password"].encode('utf-8')).hexdigest()
-    data_data = TbUsers(fname=data["fname"],lname=data["lname"],role=data["role"],cid=data["cid"],mobile=data["mobile"],email=data["email"],username=data["username"],password=password,election_option=data["election_option"], del_flag=0)
+    # data_data = TbUsers(avatar=data["avatar"],fname=data["fname"],lname=data["lname"],role=data["role"],cid=data["cid"],mobile=data["mobile"],email=data["email"],username=data["username"],password=password,rank=data["rank"],election_option=data["election_option"], del_flag=0)
+    data_data = TbUsers(fname=data["fname"],lname=data["lname"],role=data["role"],cid=data["cid"],mobile=data["mobile"],email=data["email"],username=data["username"],password=password,rank=data["rank"],election_option=data["election_option"], del_flag=0)
     data_data.save()
     return JsonResponse({"code": 200}, safe=False)
 
@@ -309,12 +461,14 @@ def updateUser(request):
         'select * from tb_users where id = ' + str(data['id']))[0]
     data_data.fname = data['fname']
     data_data.lname = data['lname']
+    # data_data.avatar = data['avatar']
     data_data.role = data['role']
     data_data.cid = data['cid']
     data_data.mobile = data['mobile']
     data_data.email = data['email']
     data_data.username = data['username']
     data_data.election_option = data['election_option']
+    data_data.rank = data['rank']
     data_data.save()
     return JsonResponse({"code": 200}, safe=False)
 
@@ -327,7 +481,7 @@ def delUser(request):
     pagenum = int(queryprms.get('pagenum', 1))
     filter = queryprms.get('filter', "id")
     sorter = queryprms.get('sorter', "asc")
-    data_del = TbUsers.objects.raw('select * from tb_elections where id = ' + id)[0]
+    data_del = TbUsers.objects.raw('select * from tb_users where id = ' + id)[0]
     data_del.del_flag = 1
     data_del.save()
     data_data = TbUsers.objects.raw(
@@ -335,3 +489,76 @@ def delUser(request):
     data_serializer = (userSerializer(data_data, many=True))
     data_count = TbUsers.objects.raw('select id, count(*) as count from tb_users where del_flag = 0 and (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '")')
     return JsonResponse({"data": data_serializer.data,"count": data_count[0].count, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getMyTeamId(request):
+    queryprms = request.GET
+    userid = queryprms.get('userid', 1)
+    limit = int(queryprms.get('limit', 5))
+    keyword = queryprms.get('keyword', "")
+    pagenum = int(queryprms.get('pagenum', 1))
+    filter = queryprms.get('filter', "id")
+    sorter = queryprms.get('sorter', "asc")
+    cursor = connection.cursor()
+    cursor.execute('select t.id, u.avatar, u.fname, u.lname, u.role, u.cid, u.mobile, u.email, u.username, u.rank, u.election_option from (select id, teamuser_id from tb_team_members where candidate_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id where (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '") order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)), None)
+    objs = cursor.fetchall()
+    json_data = []
+    for obj in objs:
+        json_data.append({"id" : obj[0], "avatar" : obj[1], "fname" : obj[2], "lname" : obj[3], "role" : obj[4], "cid" : obj[5], "mobile" : obj[6], "email" : obj[7], "username" : obj[8], "rank" : obj[9], "election_option" : obj[10]})
+    data_count = TbUsers.objects.raw('select id, count(*) as count from (select teamuser_id from tb_team_members where candidate_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id where (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '")')
+    return JsonResponse({"data": json_data,"count": data_count[0].count, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def getMyCandidateId(request):
+    queryprms = request.GET
+    userid = queryprms.get('userid', 1)
+    limit = int(queryprms.get('limit', 5))
+    keyword = queryprms.get('keyword', "")
+    pagenum = int(queryprms.get('pagenum', 1))
+    filter = queryprms.get('filter', "id")
+    sorter = queryprms.get('sorter', "asc")
+    cursor = connection.cursor()
+    print("!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#")
+    cursor.execute('select t.id, u.avatar, u.fname, u.lname, u.role, u.cid, u.mobile, u.email, u.username, u.rank, u.election_option from (select id, candidate_id from tb_team_members where teamuser_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.candidate_id = u.id where (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '") order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)), None)
+    objs = cursor.fetchall()
+    json_data = []
+    for obj in objs:
+        json_data.append({"id" : obj[0], "avatar" : obj[1], "fname" : obj[2], "lname" : obj[3], "role" : obj[4], "cid" : obj[5], "mobile" : obj[6], "email" : obj[7], "username" : obj[8], "rank" : obj[9], "election_option" : obj[10]})
+    data_count = TbUsers.objects.raw('select id, count(*) as count from (select teamuser_id from tb_team_members where candidate_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id where (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '")')
+    return JsonResponse({"data": json_data,"count": data_count[0].count, "code": 200}, safe=False)
+
+@api_view(['GET'])
+def delMyTeamId(request):
+    queryprms = request.GET
+    id = queryprms.get('id', 1)
+    userid = queryprms.get('userid', 1)
+    limit = int(queryprms.get('limit', 5))
+    keyword = queryprms.get('keyword', "")
+    pagenum = int(queryprms.get('pagenum', 1))
+    filter = queryprms.get('filter', "id")
+    sorter = queryprms.get('sorter', "asc")
+    data_del = TbTeamMembers.objects.raw('select * from tb_team_members where id = ' + id)[0]
+    data_del.del_flag = 1
+    data_del.save()
+    cursor = connection.cursor()
+    cursor.execute('select t.id, u.avatar, u.fname, u.lname, u.role, u.cid, u.mobile, u.email, u.username, u.rank, u.election_option from (select id, teamuser_id from tb_team_members where candidate_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id where (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '") order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)), None)
+    objs = cursor.fetchall()
+    json_data = []
+    for obj in objs:
+        json_data.append({"id" : obj[0], "avatar" : obj[1], "fname" : obj[2], "lname" : obj[3], "role" : obj[4], "cid" : obj[5], "mobile" : obj[6], "email" : obj[7], "username" : obj[8], "rank" : obj[9], "election_option" : obj[10]})
+    data_count = TbUsers.objects.raw('select id, count(*) as count from (select teamuser_id from tb_team_members where candidate_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id where (fname rlike "' + keyword + '" or lname rlike "' + keyword + '" or cid rlike "' + keyword + '" or mobile rlike "' + keyword + '")')
+    return JsonResponse({"data": json_data,"count": data_count[0].count, "code": 200}, safe=False)
+
+@api_view(['POST'])
+def addMyTeamId(request): 
+    data = json.loads(request.body)
+    data_data = TbTeamMembers(candidate_id=data["canid"],teamuser_id=data["teamid"],del_flag=0)
+    data_data.save()
+    return JsonResponse({"code": 200}, safe=False)
+
+@api_view(['POST'])
+def addMyCandidateId(request): 
+    data = json.loads(request.body)
+    data_data = TbTeamMembers(candidate_id=data["canid"],teamuser_id=data["teamid"],del_flag=0)
+    data_data.save()
+    return JsonResponse({"code": 200}, safe=False)

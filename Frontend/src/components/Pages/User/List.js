@@ -5,16 +5,21 @@ import { Link } from 'react-router-dom';
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux'
 import Creatable from "react-select/creatable";
 import moment from 'moment';
 import { election_status, backend_url } from "../../Constant/Config"
 import { Tag } from 'antd';
 import Swal from "sweetalert2";
+import ImageDashComponent from '../../Image/ImageDashComponent';
+import Dropzone from "react-dropzone";
 const UserList = () => {
+    const rankList = useSelector(state => state.rank);
+    const roleList = useSelector(state => state.role);
     const columns = [
         {
             name: "No",
-            width:"60px",
+            width: "60px",
             selector: (row) => [row.no],
             className: 'table-column-center'
         },
@@ -31,15 +36,14 @@ const UserList = () => {
             sortable: true
         },
         {
-            name: "Role",
-            title: "role",
-            cell: (row) => {
-                return roleList.data.map(ele => {
-                    if (ele.id - row.role === 0)
-                        return ele.name;
-                })
-            },
-            sortable: true
+            name: "Email",
+            title: "email",
+            selector: (row) => [row.email]
+        },
+        {
+            name: "Username",
+            title: "username",
+            selector: (row) => [row.username]
         },
         {
             name: "Civil Id Number",
@@ -52,29 +56,41 @@ const UserList = () => {
             selector: (row) => [row.mobile]
         },
         {
-            name: "Email",
-            title: "email",
-            selector: (row) => [row.email]
-        },
-        {
-            name: "Username",
-            title: "username",
-            selector: (row) => [row.username]
-        },
-        {
-            name: "Election Options",
-            title: "election_option",
+            name: "Role",
+            title: "role",
             cell: (row) => {
-                return rankList.data.map(ele => {
-                    if (ele.id - row.election_option === 0)
+                return roleList.data.map(ele => {
+                    if (ele.id - row.role === 0)
                         return ele.name;
                 })
             },
             sortable: true
         },
         {
+            name: "Rank",
+            title: "rank",
+            cell: (row) => {
+                return rankList.data.map(ele => {
+                    if (ele.id - row.rank === 0)
+                        return ele.name;
+                })
+            },
+            sortable: true
+        },
+        {
+            name: "Election",
+            title: "election_option",
+            cell: (row) => {
+                return electionList.data.map(ele => {
+                    if (ele.id - row.election_option === 0)
+                        return ele.title;
+                })
+            },
+            sortable: true
+        },
+        {
             name: "Action",
-            width:"100px",
+            width: "100px",
             cell: (row) => (
                 <span className="" style={{ width: "100%", textAlign: "end" }}>
                     <OverlayTrigger placement="top" overlay={<Tooltip>Edit</Tooltip>}>
@@ -115,51 +131,31 @@ const UserList = () => {
     ];
     const [show, setShow] = React.useState({ flag: false, mode: 0 });
     const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "id", sorter: "desc", pagenum: 1 });
-    React.useEffect(() => { 
+    React.useEffect(() => {
         fetch(backend_url + 'getAllPermission', { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
                 setPermissionList({ data: data.data });
             });
-        fetch(backend_url + 'getAllRank', { method: 'GET' })
+        fetch(backend_url + 'getAllElection', { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
-                setRankList({ data: data.data });
-            });
-        fetch(backend_url + 'getAllRole', { method: 'GET' })
-            .then(response => response.json())
-            .then(async data => {
-                setRoleList({ data: data.data });
+                setElectionList({ data: data.data });
             });
         getData(postData);
-        }, []);
+    }, []);
     const handleClose = () => setShow({ flag: false, mode: 0 });
     const handleShow = () => setShow({ flag: true, mode: 1 });
     const handleDetailShow = () => setShow({ flag: true, mode: 2 });
     const [allData, setAllData] = React.useState({ data: [], count: 0 });
-    const [dataValue, setDataValue] = React.useState({id:0, fname: "", lname:"", role:0, cid:null, mobile:null, email:"", username:"", password:"", election_option :""})
+    const [dataValue, setDataValue] = React.useState({ id: 0, avatar: "", fname: "", lname: "", role: 0, cid: null, mobile: null, email: "", username: "", password: "", election_option: "", rank: "" })
     const [permissionList, setPermissionList] = React.useState({ data: [] });
-    const [rankList, setRankList] = React.useState({ data: [] });
-    const [roleList, setRoleList] = React.useState({ data: [] });
+    const [electionList, setElectionList] = React.useState({ data: [] });
     const getData = (data) => {
         fetch(backend_url + 'getUser/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
-                const set_data=[];
-                await data.data.map(async e => {
-                    let set_Data_row = e;
-                    await roleList.data.map(ele => {
-                        if (ele.id - e.role === 0)
-                            set_Data_row.role_name = ele.name;
-                    })
-                    await rankList.data.map(ele => {
-                        if (ele.id - e.election_option === 0)
-                            set_Data_row.rank_name = ele.name;
-                    })
-                    set_data.push(set_Data_row);
-                })
-                console.log(set_data);
-                setAllData({ data: set_data, count: data.count })
+                setAllData({ data: data.data, count: data.count })
             });
     }
     const deleteRow = (id) => {
@@ -179,18 +175,13 @@ const UserList = () => {
                     .then(data => {
                         Swal.fire("Deleted!", "Your data has been deleted.", "success");
                         setAllData({ data: data.data, count: data.count })
-                        fetch(backend_url + 'getAllRank', { method: 'GET' })
-                            .then(response => response.json())
-                            .then(async data => {
-                                setRankList({ data: data.data });
-                            });
                     });
             }
         });
     }
     const editRow = (row) => {
         handleDetailShow();
-        setDataValue({ id:row.id, fname: row.fname, lname:row.lname, role:row.role, cid:row.cid, mobile:row.mobile, email:row.email, username:row.username, password:row.password, election_option :row.election_option})
+        setDataValue({ id: row.id, avatar: row.avatar, fname: row.fname, lname: row.lname, role: row.role, cid: row.cid, mobile: row.mobile, email: row.email, username: row.username, password: row.password, election_option: row.election_option, rank: row.rank })
     }
     const addData = () => {
         const requestOptions = {
@@ -302,22 +293,8 @@ const UserList = () => {
                                         <Form.Control type="text" className="form-control" id="lname" placeholder="lname" name="lname" value={dataValue.lname} onChange={(event) => setPropsValue(event)} />
                                     </label>
                                     <label className=''>
-                                        <Form.Control type="text" className="form-control" id="fname" placeholder="fname" name="fname" value={dataValue.fname} onChange={(event) => setPropsValue(event)}/>
+                                        <Form.Control type="text" className="form-control" id="fname" placeholder="fname" name="fname" value={dataValue.fname} onChange={(event) => setPropsValue(event)} />
                                     </label>
-                                </FormGroup>
-                                <FormGroup className="form-group">
-                                    <select id="role" placeholder="role" name="role" className="form-control select2 form-select" value={dataValue.role?dataValue.role:0} onChange={(event) => setPropsValue(event)} >
-                                         <option value={0} key={""}>No role</option>
-                                        {roleList.data.map(e => {
-                                            return <option value={e.id} key={e.id}>{e.name}</option>
-                                        })}
-                                    </select>
-                                </FormGroup>
-                                <FormGroup className="form-group">
-                                    <Form.Control type="number" className="form-control" id="cid" placeholder="Civil id number" name="cid" value={dataValue.cid} onChange={(event) => setPropsValue(event)} />
-                                </FormGroup>
-                                <FormGroup className="form-group">
-                                    <Form.Control type="number" className="form-control" id="mobile" placeholder="Mobile Number" name="mobile" value={dataValue.mobile} onChange={(event) => setPropsValue(event)} />
                                 </FormGroup>
                                 <FormGroup className="form-group">
                                     <Form.Control type="email" className="form-control" id="email" placeholder="email" name="email" value={dataValue.email} onChange={(event) => setPropsValue(event)} />
@@ -327,19 +304,39 @@ const UserList = () => {
                                 </FormGroup>
                                 {
                                     show.mode - 1 === 0 ?
-                                    <FormGroup className="form-group">
-                                        <Form.Control type="password" className="form-control" id="password" placeholder="password" name="password" value={dataValue.password} onChange={(event) => setPropsValue(event)} />
-                                    </FormGroup>
-                                    :
-                                    <></>
+                                        <FormGroup className="form-group">
+                                            <Form.Control type="password" className="form-control" id="password" placeholder="password" name="password" value={dataValue.password} onChange={(event) => setPropsValue(event)} />
+                                        </FormGroup>
+                                        :
+                                        <></>
                                 }
-                                
                                 <FormGroup className="form-group">
-                                    <select id="election_option" placeholder="election_option" name="election_option" className="form-control select2 form-select" value={dataValue.election_option?dataValue.election_option:0} onChange={(event) => setPropsValue(event)} >
-                                         <option value={0} key={""}>No rank</option>
+                                    <Form.Control type="number" className="form-control" id="cid" placeholder="Civil id number" name="cid" value={dataValue.cid} onChange={(event) => setPropsValue(event)} />
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <Form.Control type="number" className="form-control" id="mobile" placeholder="Mobile Number" name="mobile" value={dataValue.mobile} onChange={(event) => setPropsValue(event)} />
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <select id="role" placeholder="role" name="role" className="form-control select2 form-select" value={dataValue.role ? dataValue.role : 0} onChange={(event) => setPropsValue(event)} >
+                                        <option value={0} key={""}>No role</option>
+                                        {roleList.data.map(e => {
+                                            return <option value={e.id} key={e.id}>{e.name}</option>
+                                        })}
+                                    </select>
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <select id="rank" placeholder="rank" name="rank" className="form-control select2 form-select" value={dataValue.rank ? dataValue.rank : 0} onChange={(event) => setPropsValue(event)} >
+                                        <option value={0} key={""}>No rank</option>
                                         {rankList.data.map(e => {
-                                            if (show.mode - 2 === 0 && e.id - dataValue.id === 0) { }
-                                            else return <option value={e.id} key={e.id}>{e.name}</option>
+                                            return <option value={e.id} key={e.id}>{e.name}</option>
+                                        })}
+                                    </select>
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <select id="election_option" placeholder="election_option" name="election_option" className="form-control select2 form-select" value={dataValue.election_option ? dataValue.election_option : 0} onChange={(event) => setPropsValue(event)} >
+                                        <option value={0} key={""}>No election option</option>
+                                        {electionList.data.map(e => {
+                                            return <option value={e.id} key={e.id}>{e.title}</option>
                                         })}
                                     </select>
                                 </FormGroup>
@@ -379,7 +376,7 @@ const UserList = () => {
                                             </select>
                                         </label>
                                         <label className="float-end">
-                                            <input type="text" placeholder="Name, Mobile, Civil id number Search..." className="mb-4 form-control-sm form-control" onChange={changeKeyword} style={{width:"400px"}}/>
+                                            <input type="text" placeholder="Name, Mobile, Civil id number Search..." className="mb-4 form-control-sm form-control" onChange={changeKeyword} style={{ width: "400px" }} />
                                         </label>
                                         <DataTable
                                             columns={columns}

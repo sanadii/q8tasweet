@@ -91238,7 +91238,7 @@ a.text-dark:focus {
 .table-column-center {
     text-align: center;
 }
-.table_action_button :hover{
+.pointer_action_button :hover{
     cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

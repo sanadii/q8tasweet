@@ -6,12 +6,13 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+
 class TbElections(models.Model):
-    election_id = models.IntegerField(blank=True, null=True)
+    image = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     status = models.IntegerField(blank=True, null=True)
-    date = models.DateTimeField(blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255, blank=True, null=True)
     moderators = models.CharField(max_length=255, blank=True, null=True)
@@ -27,10 +28,10 @@ class TbElections(models.Model):
 
 
 class TbGuarantees(models.Model):
-    no = models.AutoField(primary_key=True)
     user_id = models.IntegerField(blank=True, null=True)
     election_id = models.IntegerField(blank=True, null=True)
     civil_id = models.IntegerField(blank=True, null=True)
+    guarantor_id = models.IntegerField(blank=True, null=True)
     mobile = models.CharField(max_length=255, blank=True, null=True)
     work = models.CharField(max_length=255, blank=True, null=True)
     family = models.CharField(max_length=255, blank=True, null=True)
@@ -110,12 +111,14 @@ class TbUserRank(models.Model):
 class TbUsers(models.Model):
     fname = models.CharField(max_length=255, blank=True, null=True)
     lname = models.CharField(max_length=255, blank=True, null=True)
+    # avatar = models.CharField(max_length=255, blank=True, null=True)
     role = models.CharField(max_length=255, blank=True, null=True)
     cid = models.IntegerField(blank=True, null=True)
     mobile = models.CharField(max_length=255, blank=True, null=True)
     email = models.CharField(max_length=255, blank=True, null=True)
     username = models.CharField(max_length=255, blank=True, null=True)
     password = models.CharField(max_length=255, blank=True, null=True)
+    rank = models.IntegerField(blank=True, null=True)
     election_option = models.CharField(max_length=255, blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
     create_by = models.IntegerField(blank=True, null=True)
@@ -165,3 +168,16 @@ class TbPermissionMenu(models.Model):
     class Meta:
         managed = False
         db_table = 'tb_permissionmenu'
+
+class TbTeamMembers(models.Model):
+    candidate_id = models.IntegerField(blank=True, null=True)
+    teamuser_id = models.IntegerField(blank=True, null=True)
+    del_flag = models.IntegerField(blank=True, null=True)
+    create_by = models.IntegerField(blank=True, null=True)
+    create_date = models.DateField(blank=True, null=True)
+    update_by = models.IntegerField(blank=True, null=True)
+    update_date = models.DateField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tb_team_members'

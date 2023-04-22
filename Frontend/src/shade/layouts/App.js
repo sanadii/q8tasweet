@@ -7,16 +7,16 @@ import RightSidebar from "../RightSidebar/RightSidebar";
 import { Outlet } from "react-router-dom";
 import TabToTop from "../TabToTop/TabToTop";
 import { Provider } from "react-redux";
-import Store from "../../redux/store/store"
+import { store } from "../../redux/store/store"
 export default function App() {
   //The created store
   document.querySelector("body").classList.add("ltr", "main-body", "app", "sidebar-mini");
   document.querySelector("body").classList.remove("error-page1", "bg-primary");
   const responsiveSidebarclose = () => {
     //leftsidemenu
-    if (window.innerWidth < 992){
-    document.querySelector(".app").classList.remove("sidenav-toggled");
-  }
+    if (window.innerWidth < 992) {
+      document.querySelector(".app").classList.remove("sidenav-toggled");
+    }
     //rightsidebar
     document.querySelector(".sidebar-right").classList.remove("sidebar-open");
     //swichermainright
@@ -38,32 +38,32 @@ export default function App() {
   return (
     <React.Fragment>
 
-        <Provider store={Store}>
-          <div className="horizontalMenucontainer">
-            <TabToTop />
-            <div className="page">
-              <div className="open">
-                <Header />
-                <Sidebar />
-              </div>
-              <div className="main-content app-content"  onClick={() => {
-                      responsiveSidebarclose();
-                    }}>
-                <div className="side-app">
-                  <div
-                    className="main-container container-fluid"
-                   
-                  >
-                    <Outlet />
-                  </div>
+      <Provider store={store}>
+        <div className="horizontalMenucontainer">
+          <TabToTop />
+          <div className="page">
+            <div className="open">
+              <Header />
+              <Sidebar />
+            </div>
+            <div className="main-content app-content" onClick={() => {
+              responsiveSidebarclose();
+            }}>
+              <div className="side-app">
+                <div
+                  className="main-container container-fluid"
+
+                >
+                  <Outlet />
                 </div>
               </div>
-              <RightSidebar/>
-              <Switcher />
-              <Footer />
             </div>
+            <RightSidebar />
+            <Switcher />
+            <Footer />
           </div>
-        </Provider>
+        </div>
+      </Provider>
     </React.Fragment>
   );
 }

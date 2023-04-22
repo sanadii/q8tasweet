@@ -3,10 +3,11 @@ import { Navbar, Dropdown, Button, Form, Col, Row, Modal } from "react-bootstrap
 import { Scrollbars } from "react-custom-scrollbars";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { auth } from "../../Firebase/firebase";
-import { useDispatch, useSelector } from 'react-redux';
 import { Delete } from '../../redux/actions/action';
 import ProductService from '../../services/ProductService';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllRank } from '../../redux/actions/rankAction'
+import { getAllRole } from '../../redux/actions/roleAction'
 export default function Header() {
   function Fullscreen() {
     if (
@@ -63,6 +64,11 @@ export default function Header() {
 
 
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    getAllRank(dispatch)
+    getAllRole(dispatch)
+  }, [dispatch])
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

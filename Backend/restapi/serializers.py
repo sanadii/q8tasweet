@@ -40,4 +40,3 @@ class rankSerializer(serializers.ModelSerializer):
     class Meta:
         model = TbUserRank
         fields = "__all__"
-

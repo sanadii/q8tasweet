@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import {useTable,useSortBy,useGlobalFilter,usePagination} from "react-table";
-import {Breadcrumb,Col,Row,Card,Button,ProgressBar} from "react-bootstrap";
+import { useTable, useSortBy, useGlobalFilter, usePagination } from "react-table";
+import { Breadcrumb, Col, Row, Card, Button, ProgressBar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Dashboarddata from "./data";
 import { COLUMNS, DATATABLE, GlobalFilter } from "./data"
@@ -37,7 +37,7 @@ export default function Dashboard() {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
- 
+
   return (
     <React.Fragment>
       <div className="breadcrumb-header justify-content-between">
@@ -69,7 +69,7 @@ export default function Dashboard() {
                       <div className="text-justified align-items-center">
                         <h3 className="text-dark font-weight-semibold mb-2 mt-0">
                           Hi, Welcome Back{" "}
-                          <span className="text-primary">Nick!</span>
+                          <span className="text-primary">Sanad!</span>
                         </h3>
                         <p className="text-dark tx-14 mb-3 lh-3">
                           You have used the 85% of free plan storage. Please
@@ -395,9 +395,9 @@ export default function Dashboard() {
             </Card.Header>
             <Card.Body>
               {/* <div id="statistics1"> */}
-                <Dashboarddata.Statistics1 />
-              
-                
+              <Dashboarddata.Statistics1 />
+
+
               {/* </div> */}
             </Card.Body>
           </Card>
@@ -1171,9 +1171,9 @@ export default function Dashboard() {
             </Card.Header>
             <Card.Body className="pt-0 example1-table">
               <div className="table-responsive">
-              <>
-              <ElectionList />
-              </>
+                <>
+                  <ElectionList />
+                </>
               </div>
             </Card.Body>
           </Card>
