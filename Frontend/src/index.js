@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Auth from "./Authentication/auth";
 import "./index.scss";
 import Loader from "./shade/Loaders/Loaders"
 const App = React.lazy(() => import("../src/shade/layouts/App"));
@@ -21,29 +20,14 @@ const RoleList = React.lazy(() => import("./components/Pages/Authority/Role"));
 const RankList = React.lazy(() => import("./components/Pages/Authority/Rank"));
 const UserList = React.lazy(() => import("./components/Pages/User/List"));
 const ElectionLists = React.lazy(() => import("./components/Pages/Election/Lists"));
-
 const Error404 = React.lazy(() => import("./components/Pages/Authentication/404Error/404Error"));
-const AuthLogin = React.lazy(() => import("./components/Pages/Auth/Login"));
-const AuthSignup = React.lazy(() => import("./Authentication/Signup"))
 //Form
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 root.render(
   <React.Fragment>
     <BrowserRouter>
       <React.Suspense fallback={<Loader />}>
         <Routes>
-          <Route path={`${process.env.PUBLIC_URL}/`} element={<Auth />}>
-            {/* <Route index element={<AuthLogin />} /> */}
-            <Route
-              path={`${process.env.PUBLIC_URL}/login`}
-              element={<AuthLogin />}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/signup`}
-              element={<AuthSignup />}
-            />
-          </Route>
           <Route path={`${process.env.PUBLIC_URL}/`} element={<App />}>
             <Route
               path={`${process.env.PUBLIC_URL}/elections`}

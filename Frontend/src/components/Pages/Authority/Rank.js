@@ -1,20 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React from 'react';
-import { Button, Row, Col, Card, Form, FormGroup, Modal, Table } from "react-bootstrap";
+import { Button, Row, Col, Card, Form, FormGroup, Modal } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import Creatable from "react-select/creatable";
-import moment from 'moment';
-import { election_status, backend_url } from "../../Constant/Config"
-import { Tag } from 'antd';
 import Swal from "sweetalert2";
+import { backend_url } from "../../Constant/Config"
 const RankList = () => {
     const columns = [
         {
             name: "No",
-            width:"60px",
+            width: "60px",
             selector: (row) => [row.no],
             className: 'table-column-center'
         },
@@ -30,7 +28,7 @@ const RankList = () => {
             selector: (row) => [row.permission_name],
             cell: (row) => (
                 <span style={{ width: "100%" }}>
-                    <select className="form-control select2 form-select" value={row.permissionid?row.permissionid:0} disabled>
+                    <select className="form-control select2 form-select" value={row.permissionid ? row.permissionid : 0} disabled>
                         <option value={0} key={""}>No permission</option>
                         {permissionList.data.map(e => {
                             return <option value={e.id} key={e.id}>{e.name}</option>
@@ -47,7 +45,7 @@ const RankList = () => {
         },
         {
             name: "Action",
-            width:"100px",
+            width: "100px",
             cell: (row) => (
                 <span className="" style={{ width: "100%", textAlign: "end" }}>
                     <OverlayTrigger placement="top" overlay={<Tooltip>Edit</Tooltip>}>
@@ -88,7 +86,7 @@ const RankList = () => {
     ];
     const [show, setShow] = React.useState({ flag: false, mode: 0 });
     const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "name", sorter: "desc", pagenum: 1 });
-    React.useEffect(() => { 
+    React.useEffect(() => {
         fetch(backend_url + 'getAllPermission', { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
@@ -100,19 +98,19 @@ const RankList = () => {
                 setRankList({ data: data.data });
             });
         getData(postData);
-        }, []);
+    }, []);
     const handleClose = () => setShow({ flag: false, mode: 0 });
     const handleShow = () => setShow({ flag: true, mode: 1 });
     const handleDetailShow = () => setShow({ flag: true, mode: 2 });
     const [allData, setAllData] = React.useState({ data: [], count: 0 });
-    const [dataValue, setDataValue] = React.useState({id:0, name: "", permissionid: 0, parentid: 0})
+    const [dataValue, setDataValue] = React.useState({ id: 0, name: "", permissionid: 0, parentid: 0 })
     const [permissionList, setPermissionList] = React.useState({ data: [] });
     const [rankList, setRankList] = React.useState({ data: [] });
     const getData = (data) => {
         fetch(backend_url + 'getRank/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
-                const set_data=[];
+                const set_data = [];
                 await data.data.map(async e => {
                     let set_Data_row = e;
                     await permissionList.data.map(ele => {
@@ -125,7 +123,6 @@ const RankList = () => {
                     })
                     set_data.push(set_Data_row);
                 })
-                console.log(set_data);
                 setAllData({ data: set_data, count: data.count })
                 fetch(backend_url + 'getAllRank', { method: 'GET' })
                     .then(response => response.json())
@@ -258,7 +255,7 @@ const RankList = () => {
                     </span>
                 </div>
                 <div className="justify-content-center mt-2">
-                    <Link className="btn me-2 btn-rounded btn-outline-primary" to="#" onClick={() => { handleShow(); setDataValue({id:0, name:"", permissionid: 0, parentid: 0}) }}><i className="fe fe-plus me-2"></i>Add New Rank</Link>
+                    <Link className="btn me-2 btn-rounded btn-outline-primary" to="#" onClick={() => { handleShow(); setDataValue({ id: 0, name: "", permissionid: 0, parentid: 0 }) }}><i className="fe fe-plus me-2"></i>Add New Rank</Link>
                     <Modal show={show.flag} onHide={handleClose}>
                         <Modal.Header className="modal-header">
                             {show.mode - 1 === 0 ?
@@ -273,16 +270,16 @@ const RankList = () => {
                                     <Form.Control type="text" className="form-control" id="name" placeholder="name" name="name" value={dataValue.name} onChange={(event) => setPropsValue(event)} />
                                 </FormGroup>
                                 <FormGroup className="form-group">
-                                    <select id="permissionid" placeholder="permission id" name="permissionid" className="form-control select2 form-select" value={dataValue.permissionid?dataValue.permissionid:0} onChange={(event) => setPropsValue(event)} >
-                                         <option value={0} key={""}>No permission</option>
+                                    <select id="permissionid" placeholder="permission id" name="permissionid" className="form-control select2 form-select" value={dataValue.permissionid ? dataValue.permissionid : 0} onChange={(event) => setPropsValue(event)} >
+                                        <option value={0} key={""}>No permission</option>
                                         {permissionList.data.map(e => {
                                             return <option value={e.id} key={e.id}>{e.name}</option>
                                         })}
                                     </select>
                                 </FormGroup>
                                 <FormGroup className="form-group">
-                                    <select id="parentid" placeholder="permission id" name="parentid" className="form-control select2 form-select" value={dataValue.parentid?dataValue.parentid:0} onChange={(event) => setPropsValue(event)} >
-                                         <option value={0} key={""}>No parent</option>
+                                    <select id="parentid" placeholder="permission id" name="parentid" className="form-control select2 form-select" value={dataValue.parentid ? dataValue.parentid : 0} onChange={(event) => setPropsValue(event)} >
+                                        <option value={0} key={""}>No parent</option>
                                         {rankList.data.map(e => {
                                             if (show.mode - 2 === 0 && e.id - dataValue.id === 0) { }
                                             else return <option value={e.id} key={e.id}>{e.name}</option>

@@ -17,11 +17,18 @@ urlpatterns = [
     url(r'getPrev5Election', views.getPrev5Election),
     url(r'getElectionId/', views.getElectionId),
     url(r'getCountCandidate/', views.getCountCandidate),
+    #
     url(r'getUserTeamCount/', views.getUserTeamCount),
+    url(r'getSupervisorTeamCount/', views.getSupervisorTeamCount),
+    #
+    url(r'getMyGuanatorId/', views.getMyGuanatorId),
+    url(r'delMyGuanatorId/', views.delMyGuanatorId),
+    url(r'addMyGuanatorId', views.addMyGuanatorId),
+    #
     url(r'getGuaranteesCount/', views.getGuaranteesCount),
     url(r'getUserId/', views.getUserId),
     url(r'getIdUser', views.getIdUser),
-    # 
+    #
     url(r'getMyCandidateId/', views.getMyCandidateId),
     url(r'getCandidateElection/', views.getCandidateElection),
     url(r'addMyCandidateId', views.addMyCandidateId),

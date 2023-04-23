@@ -31,10 +31,12 @@ class permissionMenuSerializer(serializers.ModelSerializer):
         model = TbPermissionMenu
         fields = "__all__"
 
+
 class roleSerializer(serializers.ModelSerializer):
     class Meta:
         model = TbUsersRole
         fields = "__all__"
+
 
 class rankSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,44 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React from 'react';
-import { Button, Row, Col, Card, Form, FormGroup, Modal, Tab, Tabs } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import moment from 'moment';
-import { election_status, backend_url } from "../../Constant/Config"
+import { Button, Row, Col, Card, Form, FormGroup } from "react-bootstrap";
+import { backend_url } from "../../Constant/Config"
 import TreeView from "deni-react-treeview";
 import Swal from "sweetalert2";
 const MenuLists = () => {
-  const [show, setShow] = React.useState({ flag: false, mode: 0 });
-  const [postData, setPostData] = React.useState({
-    limit: 5, keyword: "", filter: "date", sorter: "desc", pagenum: 1
-  });
-  React.useEffect(() => {
-    getData(postData);
-  }, []);
-  const handleClose = () => setShow({ flag: false, mode: 0 });
+  React.useEffect(() => { getData(); }, []);
   const [allData, setAllData] = React.useState({ data: [] });
-  const [election, setElection] = React.useState({
-    id: 0,
-    election_id: "",
-    title: "",
-    description: "",
-    status: 0,
-    date: "",
-    location: "",
-    type: "",
-    moderators: "",
-  })
-  const [menu, setMenu] = React.useState({
-    id: 0,
-    name: "",
-    url: "",
-    parent: "",
-    parentId: 0
-  })
-  const [status, setStatus] = React.useState({
-    flag: false
-  })
-  const getData = (data) => {
+  const [election,] = React.useState({ id: 0, election_id: "", title: "", description: "", status: 0, date: "", location: "", type: "", moderators: "", });
+  const [menu, setMenu] = React.useState({ id: 0, name: "", url: "", parent: "", parentId: 0 });
+  const [status, setStatus] = React.useState({ flag: false });
+  const getData = () => {
     fetch(backend_url + 'getMenu')
       .then(response => response.json())
       .then(data => {
@@ -64,7 +37,7 @@ const MenuLists = () => {
           paretname = ele.text;
         }
       })
-      setMenu({ id: e.id, name: e.text, url: e.url, parent: paretname, parentId:e.parentid })
+      setMenu({ id: e.id, name: e.text, url: e.url, parent: paretname, parentId: e.parentid })
     } else {
       setMenu({ id: e.id, name: e.text, url: e.url, parent: "", parentId: 0 })
     }
@@ -80,8 +53,7 @@ const MenuLists = () => {
       .then(response => response.json())
       .then(data => {
         if (data.code - 200 === 0) {
-          getData(postData);
-          handleClose();
+          getData();
         }
       });
   }
@@ -105,8 +77,7 @@ const MenuLists = () => {
           .then(response => response.json())
           .then(data => {
             if (data.code - 200 === 0) {
-              getData(postData);
-              handleClose();
+              getData();
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
           });
@@ -114,31 +85,30 @@ const MenuLists = () => {
     });
   }
   const deleteMenu = () => {
-      Swal.fire({
-          title: "Are you sure?",
-          text: "You delete this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-          if (result.isConfirmed) {
-              const data = postData
-              fetch(backend_url + 'delMenu/?id=' + menu.id, { method: 'GET' })
-                  .then(response => response.json())
-                  .then(data => {
-                      Swal.fire("Deleted!", "Your data has been deleted.", "success");
-                      setAllData({ data: data.data, count: data.count })
-                  });
-          }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(backend_url + 'delMenu/?id=' + menu.id, { method: 'GET' })
+          .then(response => response.json())
+          .then(data => {
+            Swal.fire("Deleted!", "Your data has been deleted.", "success");
+            setAllData({ data: data.data, count: data.count })
+          });
+      }
+    });
   }
   const setMenuData = (event) => {
     setMenu({ ...menu, [event.target.name]: event.target.value });
   }
   const setCheckMenu = () => {
-    menu.parentId === 0 ? setMenu({...menu, parentId:1, parent:""}):setMenu({...menu, parentId:0, parent:"" })
+    menu.parentId === 0 ? setMenu({ ...menu, parentId: 1, parent: "" }) : setMenu({ ...menu, parentId: 0, parent: "" })
   }
   const setStatusFlag = () => {
     setStatus({ flag: !status.flag });
@@ -198,8 +168,8 @@ const MenuLists = () => {
                           </div>
                         </div>
                         {
-                          menu.parentId === 0?<></>:
-                          <FormGroup className="form-group">
+                          menu.parentId === 0 ? <></> :
+                            <FormGroup className="form-group">
                               <select className="form-control select2 form-select" id="parent" placeholder="parent" name="parent" value={menu.parent} onChange={(event) => setMenuData(event)}>
                                 {allData.data.map(e => {
                                   return <option value={e.text} key={e.id}>{e.text}</option>
@@ -236,12 +206,12 @@ const MenuLists = () => {
                         <Button variant="" className="btn ripple btn-primary" type="button" onClick={addMenu}>
                           Add Menu
                         </Button> : <>
-                        <Button variant="" className="btn ripple btn-primary" type="button" onClick={updateElection}>
-                          Update Menu
-                        </Button> &nbsp;&nbsp;&nbsp;
-                        <Button variant="" className="btn ripple btn-danger" type="button" onClick={deleteMenu}>
-                          Delete Menu
-                        </Button>
+                          <Button variant="" className="btn ripple btn-primary" type="button" onClick={updateElection}>
+                            Update Menu
+                          </Button> &nbsp;&nbsp;&nbsp;
+                          <Button variant="" className="btn ripple btn-danger" type="button" onClick={deleteMenu}>
+                            Delete Menu
+                          </Button>
                         </>}
                     </Card.Body>
                   </Card>
@@ -254,4 +224,5 @@ const MenuLists = () => {
     </div >
   )
 }
+
 export default MenuLists;

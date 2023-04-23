@@ -1,18 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React from 'react';
-import { Button, Row, Col, Card, Form, FormGroup, Modal, Table } from "react-bootstrap";
+import { Button, Row, Col, Card, Form, FormGroup, Modal } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { useDispatch, useSelector } from 'react-redux'
-import Creatable from "react-select/creatable";
-import moment from 'moment';
-import { election_status, backend_url } from "../../Constant/Config"
-import { Tag } from 'antd';
+import { useSelector } from 'react-redux'
+import { backend_url } from "../../Constant/Config"
 import Swal from "sweetalert2";
-import ImageDashComponent from '../../Image/ImageDashComponent';
-import Dropzone from "react-dropzone";
 const UserList = () => {
     const rankList = useSelector(state => state.rank);
     const roleList = useSelector(state => state.role);
@@ -132,11 +128,6 @@ const UserList = () => {
     const [show, setShow] = React.useState({ flag: false, mode: 0 });
     const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "id", sorter: "desc", pagenum: 1 });
     React.useEffect(() => {
-        fetch(backend_url + 'getAllPermission', { method: 'GET' })
-            .then(response => response.json())
-            .then(async data => {
-                setPermissionList({ data: data.data });
-            });
         fetch(backend_url + 'getAllElection', { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
@@ -149,7 +140,6 @@ const UserList = () => {
     const handleDetailShow = () => setShow({ flag: true, mode: 2 });
     const [allData, setAllData] = React.useState({ data: [], count: 0 });
     const [dataValue, setDataValue] = React.useState({ id: 0, avatar: "", fname: "", lname: "", role: 0, cid: null, mobile: null, email: "", username: "", password: "", election_option: "", rank: "" })
-    const [permissionList, setPermissionList] = React.useState({ data: [] });
     const [electionList, setElectionList] = React.useState({ data: [] });
     const getData = (data) => {
         fetch(backend_url + 'getUser/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })

@@ -1,34 +1,26 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-
-import { Card, Col, Dropdown, Breadcrumb, Nav, Row, Tab, FormGroup, Form, Button, ProgressBar, Modal } from "react-bootstrap";
+import { Card, Button, Modal } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
-import moment from 'moment';
 import Swal from "sweetalert2";
-import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from 'react-redux';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { TextareaAutosize } from "@mui/material";
-import { images } from "../../../../components/Pages/Gallery/data";
-import CandidateCard from "../../../Cards/CandidateCard";
 import { backend_url } from "../../../Constant/Config"
-import ImageDashComponent from "../../../Image/ImageDashComponent";
-import CandidateDetailTCard from "../../../Cards/CandidateDetailTCard";
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
-import Creatable from "react-select/creatable";
 import Select from "react-select";
-// import { Breadcrumb, Card, Carousel, Col, ProgressBar, Row } from 'react-bootstrap';
+import { getGuanatorDetail } from "../../../../redux/actions/userDetailAction";
 const GuanatorDetail = () => {
     let { id } = useParams();
     let { userid } = useParams();
+    const dispatch = useDispatch();
     const [show, setShow] = React.useState({ flag: false });
     const handleClose = () => setShow({ flag: false });
     const handleShow = () => setShow({ flag: true });
     const rankList = useSelector(state => state.rank);
     const roleList = useSelector(state => state.role);
+    const userDetail = useSelector(state => state.userDetail);
     const [electionData, setElectionData] = React.useState({ id: id, title: "", description: "", location: "", date: "", type: "", image: "" });
     const [userData, setUserData] = React.useState({ id: userid });
     const [teamcount, setTeamCount] = React.useState();
@@ -89,6 +81,24 @@ const GuanatorDetail = () => {
             selector: (row) => [row.username]
         },
         {
+            name: "Guarantee",
+            title: "guarantee",
+            sortable: true,
+            selector: (row) => [row.guarantee],
+        },
+        {
+            name: "Attended",
+            title: "attended",
+            sortable: true,
+            selector: (row) => [row.attended]
+        },
+        {
+            name: "Status",
+            title: "status",
+            sortable: true,
+            selector: (row) => [row.status]
+        },
+        {
             name: "",
             width: "50px",
             cell: (row) => (
@@ -145,11 +155,7 @@ const GuanatorDetail = () => {
         fetchData().catch(err => console.log(err));
     }, [])
     const getData = (data) => {
-        fetch(backend_url + 'getMyCandidateId/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum + '&userid=' + userid, { method: 'GET' })
-            .then(response => response.json())
-            .then(async data => {
-                setAllData({ data: data.data, count: data.count })
-            });
+        getGuanatorDetail({ data: postData, userid: userid, id: id }, dispatch);
     }
     const showCount = (type) => {
         let total = 0;
@@ -226,11 +232,11 @@ const GuanatorDetail = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 const data = postData
-                fetch(backend_url + 'delMyTeamId/?id=' + id + '&limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum + '&userid=' + userid, { method: 'GET' })
+                fetch(backend_url + 'delMyGuanatorId/?id=' + id, { method: 'GET' })
                     .then(response => response.json())
                     .then(data => {
                         Swal.fire("Deleted!", "Your data has been deleted.", "success");
-                        setAllData({ data: data.data, count: data.count })
+                        getGuanatorDetail({ data: postData, userid: userid, id: id }, dispatch);
                     });
             }
         });
@@ -259,7 +265,7 @@ const GuanatorDetail = () => {
     };
     const checkableAdd = () => {
         let a = 0;
-        allData.data && allData.data.map(ele => {
+        userDetail.userData && userDetail.userData.map(ele => {
             if (ele.fname === selectedUser.fname && ele.lname === selectedUser.lname && ele.email === selectedUser.email && ele.cid - selectedUser.cid === 0) {
                 a = 1;
             }
@@ -280,24 +286,67 @@ const GuanatorDetail = () => {
                 window.location.href = `${process.env.PUBLIC_URL}/elections/` + id + `/` + data.data;
             });
     }
+    const downloadFile = ({ data, fileName, fileType }) => {
+        const blob = new Blob([data], { type: fileType })
+
+        const a = document.createElement('a')
+        a.download = fileName
+        a.href = window.URL.createObjectURL(blob)
+        const clickEvt = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+        })
+        a.dispatchEvent(clickEvt)
+        a.remove()
+    }
+    const exportToCsv = (e) => {
+        e.preventDefault()
+
+        // Headers for each column
+        let headers = ['No,First Name,Last Name,Rank,Role,Mobile, Civil Id, Username, Guarantee, Attended, Status ']
+
+        // Convert users data to a csv userDetail.userData
+        let csvData = changeData(userDetail.userData).reduce((acc, user) => {
+            const { no, fname, lname, rank, role, mobile, cid, username, guarantee, attended, status } = user;
+            let rankStr = "";
+            let roleStr = "";
+            rankList.data.map(ele => {
+                if (ele.id - rank === 0)
+                    rankStr = ele.name;
+            }, []);
+            roleList.data.map(ele => {
+                if (ele.id - role === 0)
+                    roleStr = ele.name;
+            }, []);
+            acc.push([no, fname, lname, rankStr, roleStr, mobile, cid, username, guarantee, attended, status].join(','))
+            return acc
+        }, [])
+
+        downloadFile({
+            data: [...headers, ...csvData].join('\n'),
+            fileName: 'guanator.csv',
+            fileType: 'text/csv',
+        })
+    }
     return (
         <Card className="card-primary customs-cards">
             <Card.Header className=" pb-3">
                 <div className="card-title pb-0  mb-2">
-                    MY CANDIDATE
+                    MY TEAM
                     <div className="float-end">
                         <Button variant='' className="btn-sm btn-primary btn-rounded" onClick={handleShow}>
-                            <i className="fe fe-user-plus me-1"></i> Add New Candidate
+                            <i className="fe fe-user-plus me-1"></i> Add New User
                         </Button>
                         &nbsp;
-                        <Button variant='' className="btn-sm btn-primary btn-rounded">
+                        <Button variant='' className="btn-sm btn-primary btn-rounded" onClick={exportToCsv}>
                             <i className="fe fe-download me-1"></i> Download
                         </Button>
                     </div>
                 </div>
                 <Modal show={show.flag} onHide={handleClose} >
                     <Modal.Header className="modal-header">
-                        <Modal.Title>Add New Team Member</Modal.Title>
+                        <Modal.Title>Add New User</Modal.Title>
                         <Button variant="" className="btn btn-close" onClick={handleClose}>
                             x
                         </Button>
@@ -330,7 +379,7 @@ const GuanatorDetail = () => {
                             className="btn ripple btn-primary"
                             type="button"
                             onClick={() => {
-                                if (checkableAdd() === true) {
+                                if (checkableAdd() === true || selectedUser.id - userid === 0) {
                                     handleClose();
                                     Swal.fire({
                                         title: "Add Warning",
@@ -344,9 +393,9 @@ const GuanatorDetail = () => {
                                     const requestOptions = {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
-                                        body: JSON.stringify({ teamid: userid, canid: selectedUser.id })
+                                        body: JSON.stringify({ guarantorid: userid, electionid: id, userid: selectedUser.id, guarantee: 0, attended: 0, status: "add" })
                                     };
-                                    fetch(backend_url + 'addMyCandidateId', requestOptions)
+                                    fetch(backend_url + 'addMyGuanatorId', requestOptions)
                                         .then(response => response.json())
                                         .then(data => {
                                             if (data.code - 200 === 0) {
@@ -380,7 +429,7 @@ const GuanatorDetail = () => {
                             </label>
                             <DataTable
                                 columns={candidateColums}
-                                data={changeData(allData.data)}
+                                data={changeData(userDetail.userData)}
                                 defaultSortField="id"
                                 defaultSortAsc={false}
                                 pagination={false}
@@ -388,7 +437,7 @@ const GuanatorDetail = () => {
                                 onSort={tableAction}
                             />
                             <label className="float-end" style={{ marginTop: "5px" }}>
-                                <Pagination page={postData.pagenum} count={Math.ceil(allData.count / postData.limit)} showFirstButton showLastButton onChange={changePagenum} />
+                                <Pagination page={postData.pagenum} count={Math.ceil(userDetail.userDataCount / postData.limit)} showFirstButton showLastButton onChange={changePagenum} />
                             </label>
                         </span>
                     </span>

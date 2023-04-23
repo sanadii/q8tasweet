@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React from 'react';
 import { Button, Row, Col, Card, Form, FormGroup, Modal } from "react-bootstrap";
@@ -125,9 +126,7 @@ const ElectionLists = () => {
     }
   ];
   const [show, setShow] = React.useState({ flag: false, mode: 0 });
-  const [postData, setPostData] = React.useState({
-    limit: 5, keyword: "", filter: "date", sorter: "desc", pagenum: 1
-  });
+  const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "date", sorter: "desc", pagenum: 1 });
   React.useEffect(() => {
     getData(postData);
   }, []);
@@ -135,17 +134,7 @@ const ElectionLists = () => {
   const handleShow = () => setShow({ flag: true, mode: 1 });
   const handleDetailShow = () => setShow({ flag: true, mode: 2 });
   const [allData, setAllData] = React.useState({ data: [], count: 0 });
-  const [election, setElection] = React.useState({
-    id: 0,
-    image: "",
-    title: "",
-    description: "",
-    status: 0,
-    date: "",
-    location: "",
-    type: "",
-    moderators: "",
-  })
+  const [election, setElection] = React.useState({ id: 0, image: "", title: "", description: "", status: 0, date: "", location: "", type: "", moderators: "" })
   const getData = (data) => {
     fetch(backend_url + 'getElection/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
       .then(response => response.json())
@@ -300,11 +289,7 @@ const ElectionLists = () => {
             <Modal.Body className="modal-body"> <div className="p-4">
               <Form className="form-horizontal">
                 <FormGroup className="form-group">
-                  <Dropzone
-                    onDrop={(event) => {
-                      handleImageChange(event);
-                    }}
-                  >
+                  <Dropzone onDrop={(event) => { handleImageChange(event); }}>
                     {({ getRootProps, getInputProps }) => (
                       <div className="dropzone dz-clickable">
                         <div className="dz-message needsclick" {...getRootProps()}>

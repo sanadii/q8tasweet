@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from 'react';
 import { backend_url } from '../Constant/Config';
 const AvatarUserComponent = ({ imagePath }) => {
@@ -14,7 +12,6 @@ const AvatarUserComponent = ({ imagePath }) => {
                     setImageData(data.data);
                 })
     }, [imagePath]);
-    // eslint-disable-next-line jsx-a11y/alt-text
     return (
         <>
             {imageData && <img alt="avatar" className="rounded-circle" src={`data:image;base64, ${imageData}`} />}

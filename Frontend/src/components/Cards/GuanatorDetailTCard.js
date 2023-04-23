@@ -1,51 +1,16 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Breadcrumb, Button, Dropdown, Card, Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { backend_url } from "../Constant/Config";
-import { useDispatch, useSelector } from 'react-redux'
-// import AvatarUserComponent from "../Image/AvatarUserComponent";
+import { Card } from "react-bootstrap";
+import { useSelector } from 'react-redux'
 const GuanatorDetailTCard = (props) => {
     const rankList = useSelector(state => state.rank);
     const roleList = useSelector(state => state.role);
-    const showCount = (type) => {
-        let total = 0;
-        switch (type) {
-            case "total":
-                props.teamcount && props.teamcount.map(ele => {
-                    total += ele.count;
-                })
-                break;
-            case "supervisor":
-                props.teamcount && props.teamcount.map(ele => {
-                    if (ele.name === "supervisor") total = ele.count
-                })
-                break;
-            case "guarantor":
-                props.teamcount && props.teamcount.map(ele => {
-                    if (ele.name === "guarantor") total = ele.count
-                })
-                break;
-            case "checker":
-                props.teamcount && props.teamcount.map(ele => {
-                    if (ele.name === "checker") total = ele.count
-                })
-                break;
-            case "sorter":
-                props.teamcount && props.teamcount.map(ele => {
-                    if (ele.name === "sorter") total = ele.count
-                })
-                break;
-            default:
-                break;
-        }
-        return total;
-    }
     return (
         <Card className=" user-wideget user-wideget-widget widget-user">
             <div className="widget-user-header br-te-5  br-ts-5  bg-primary">
                 <h3 className="widget-user-username">
-                    <a href="https://thevirtualrealitytrip.com/election/sabahalsalem?user=fahhadsaud">
+                    <a href={`${process.env.PUBLIC_URL} /elections/` + props.election_id}>
                         {props.election_title}
                     </a>
                 </h3>
@@ -62,21 +27,6 @@ const GuanatorDetailTCard = (props) => {
             <div className="user-wideget-footer">
                 <h3 className="card-title mb-2">Election Title: <span>{props.election_title}</span></h3>
                 <h3 className="card-title mb-2">Election Date: <span>{props.election_date}</span></h3>
-                <p><strong>Team:</strong></p>
-                <ul>
-                    <li>
-                        <strong>Guarantors: </strong>
-                        {showCount("guarantor")}
-                    </li>
-                    <li>
-                        <strong>Checkers: </strong>
-                        {showCount("checker")}
-                    </li>
-                    <li>
-                        <strong>Sorters: </strong>
-                        {showCount("sorter")}
-                    </li>
-                </ul>
                 <p><strong>User Infomation:</strong></p>
                 <ul>
                     <li><strong>Name:</strong> {props.data.fname + " " + props.data.lname} </li>

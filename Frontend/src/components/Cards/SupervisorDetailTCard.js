@@ -1,38 +1,42 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Breadcrumb, Button, Dropdown, Card, Col, ListGroup, ListGroupItem, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { backend_url } from "../Constant/Config";
-import { useDispatch, useSelector } from 'react-redux'
-// import AvatarUserComponent from "../Image/AvatarUserComponent";
+import { Card } from "react-bootstrap";
+import { useSelector } from 'react-redux'
 const SupervisorDetailTCard = (props) => {
+    const count = useSelector(state => state.userDetail.teamCount);
     const rankList = useSelector(state => state.rank);
     const roleList = useSelector(state => state.role);
     const showCount = (type) => {
         let total = 0;
         switch (type) {
             case "total":
-                props.teamcount && props.teamcount.map(ele => {
+                count && count.map(ele => {
                     total += ele.count;
                 })
                 break;
+            case "candidate":
+                count && count.map(ele => {
+                    if (ele.name === "candidate") total = ele.count
+                })
+                break;
             case "supervisor":
-                props.teamcount && props.teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "supervisor") total = ele.count
                 })
                 break;
             case "guarantor":
-                props.teamcount && props.teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "guarantor") total = ele.count
                 })
                 break;
             case "checker":
-                props.teamcount && props.teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "checker") total = ele.count
                 })
                 break;
             case "sorter":
-                props.teamcount && props.teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "sorter") total = ele.count
                 })
                 break;
@@ -45,7 +49,7 @@ const SupervisorDetailTCard = (props) => {
         <Card className=" user-wideget user-wideget-widget widget-user">
             <div className="widget-user-header br-te-5  br-ts-5  bg-primary">
                 <h3 className="widget-user-username">
-                    <a href="https://thevirtualrealitytrip.com/election/sabahalsalem?user=fahhadsaud">
+                    <a href={`${process.env.PUBLIC_URL} /elections/` + props.election_id}>
                         {props.election_title}
                     </a>
                 </h3>
@@ -64,6 +68,14 @@ const SupervisorDetailTCard = (props) => {
                 <h3 className="card-title mb-2">Election Date: <span>{props.election_date}</span></h3>
                 <p><strong>Team:</strong></p>
                 <ul>
+                    <li>
+                        <strong>Candidates: </strong>
+                        {showCount("candidate")}
+                    </li>
+                    <li>
+                        <strong>Supervisors: </strong>
+                        {showCount("supervisor")}
+                    </li>
                     <li>
                         <strong>Guarantors: </strong>
                         {showCount("guarantor")}

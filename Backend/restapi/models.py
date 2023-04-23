@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class TbElections(models.Model):
     image = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
@@ -30,12 +31,7 @@ class TbElections(models.Model):
 class TbGuarantees(models.Model):
     user_id = models.IntegerField(blank=True, null=True)
     election_id = models.IntegerField(blank=True, null=True)
-    civil_id = models.IntegerField(blank=True, null=True)
     guarantor_id = models.IntegerField(blank=True, null=True)
-    mobile = models.CharField(max_length=255, blank=True, null=True)
-    work = models.CharField(max_length=255, blank=True, null=True)
-    family = models.CharField(max_length=255, blank=True, null=True)
-    details = models.CharField(max_length=255, blank=True, null=True)
     guarantee = models.IntegerField(blank=True, null=True)
     attended = models.IntegerField(blank=True, null=True)
     status = models.CharField(max_length=255, blank=True, null=True)
@@ -53,7 +49,8 @@ class TbGuarantees(models.Model):
 class TbMenu(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=255, blank=True, null=True)
-    parentid = models.IntegerField(db_column='parentId', blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    parentid = models.IntegerField(db_column='parentId', blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
     create_by = models.IntegerField(blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
@@ -95,8 +92,11 @@ class TbSorting(models.Model):
 
 class TbUserRank(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    permissionid = models.IntegerField(db_column='permissionId', blank=True, null=True)  # Field name made lowercase.
-    parentid = models.IntegerField(db_column='parentId', blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    permissionid = models.IntegerField(
+        db_column='permissionId', blank=True, null=True)
+    # Field name made lowercase.
+    parentid = models.IntegerField(db_column='parentId', blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
     create_by = models.IntegerField(blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
@@ -133,7 +133,9 @@ class TbUsers(models.Model):
 
 class TbUsersRole(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
-    permissionid = models.IntegerField(db_column='permissionId', blank=True, null=True)  # Field name made lowercase.
+    # Field name made lowercase.
+    permissionid = models.IntegerField(
+        db_column='permissionId', blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
     create_by = models.IntegerField(blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
@@ -159,8 +161,10 @@ class TbVoters(models.Model):
         managed = False
         db_table = 'tb_voters'
 
+
 class TbPermissionMenu(models.Model):
-    permissionid = models.IntegerField(db_column='permissionId', blank=True, null=True)
+    permissionid = models.IntegerField(
+        db_column='permissionId', blank=True, null=True)
     menuid = models.IntegerField(db_column='menuId', blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
     label = models.CharField(max_length=255, blank=True, null=True)
@@ -168,6 +172,7 @@ class TbPermissionMenu(models.Model):
     class Meta:
         managed = False
         db_table = 'tb_permissionmenu'
+
 
 class TbTeamMembers(models.Model):
     candidate_id = models.IntegerField(blank=True, null=True)

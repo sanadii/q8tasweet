@@ -3,7 +3,6 @@
 import React from "react";
 import { Card, Col, Breadcrumb, Row, ProgressBar } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useSelector } from 'react-redux';
 import { backend_url } from "../../../Constant/Config"
 import CandidateDetail from "./CandidateDetail";
@@ -12,31 +11,19 @@ import GuanatorDetail from "./GuanatorDetail";
 import CandidateDetailTCard from "../../../Cards/CandidateDetailTCard";
 import SupervisorDetailTCard from "../../../Cards/SupervisorDetailTCard";
 import GuanatorDetailTCard from "../../../Cards/GuanatorDetailTCard";
-// import { Breadcrumb, Card, Carousel, Col, ProgressBar, Row } from 'react-bootstrap';
 const UserDetailIndex = () => {
     let { id } = useParams();
     let { userid } = useParams();
-    const rankList = useSelector(state => state.rank);
-    const roleList = useSelector(state => state.role);
+    const count = useSelector(state => state.userDetail.teamCount);
     const [electionData, setElectionData] = React.useState({ id: id, title: "", description: "", location: "", date: "", type: "", image: "" });
     const [userData, setUserData] = React.useState({ id: userid });
-    const [teamcount, setTeamCount] = React.useState();
     const [guaranteesCount, setGuaranteesCount] = React.useState({ my: 0, all: 0 });
-    const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "id", sorter: "desc", pagenum: 1 });
-    const [allData, setAllData] = React.useState({ data: [], count: 0 });
-    const [allUser, setAllUser] = React.useState(null);
-    const [selectedUser, setSelectedUser] = React.useState();
     React.useEffect(() => {
         const fetchData = async () => {
             await fetch(backend_url + 'getElectionId/?id=' + id, { method: 'GET' })
                 .then(response => response.json())
                 .then(data => {
                     setElectionData(data.data);
-                });
-            await fetch(backend_url + 'getUserElection/?id=' + id, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-                    setAllUser(data.data);
                 });
             await fetch(backend_url + 'getGuaranteesCount/?id=' + userid + '&eid=' + id, { method: 'GET' })
                 .then(response => response.json())
@@ -48,47 +35,39 @@ const UserDetailIndex = () => {
                 .then(data => {
                     setUserData(data.data)
                 });
-            await fetch(backend_url + 'getUserTeamCount/?id=' + userid, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-                    setTeamCount(data.data);
-                });
-            getData(postData);
         };
         fetchData().catch(err => console.log(err));
     }, [])
-    const getData = (data) => {
-        fetch(backend_url + 'getMyTeamId/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum + '&userid=' + userid, { method: 'GET' })
-            .then(response => response.json())
-            .then(async data => {
-                setAllData({ data: data.data, count: data.count })
-            });
-    }
     const showCount = (type) => {
         let total = 0;
         switch (type) {
             case "total":
-                teamcount && teamcount.map(ele => {
+                count && count.map(ele => {
                     total += ele.count;
                 })
                 break;
+            case "candidate":
+                count && count.map(ele => {
+                    if (ele.name === "candidate") total = ele.count
+                })
+                break;
             case "supervisor":
-                teamcount && teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "supervisor") total = ele.count
                 })
                 break;
             case "guarantor":
-                teamcount && teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "guarantor") total = ele.count
                 })
                 break;
             case "checker":
-                teamcount && teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "checker") total = ele.count
                 })
                 break;
             case "sorter":
-                teamcount && teamcount.map(ele => {
+                count && count.map(ele => {
                     if (ele.name === "sorter") total = ele.count
                 })
                 break;
@@ -250,17 +229,17 @@ const UserDetailIndex = () => {
                     <Col xl={12} lg={12}>
                         {userData.rank - 2 === 0
                             ?
-                            <CandidateDetailTCard data={userData} teamcount={teamcount} election_title={electionData.title} election_date={electionData.date} />
+                            <CandidateDetailTCard data={userData} election_title={electionData.title} election_date={electionData.date} election_id={electionData.id} />
                             : <>
                                 {
                                     userData.rank - 3 === 0
                                         ?
-                                        <SupervisorDetailTCard data={userData} teamcount={teamcount} election_title={electionData.title} election_date={electionData.date} />
+                                        <SupervisorDetailTCard data={userData} election_title={electionData.title} election_date={electionData.date} election_id={electionData.id} />
                                         : <>
                                             {
                                                 userData.rank - 4 === 0
                                                     ?
-                                                    <GuanatorDetailTCard data={userData} teamcount={teamcount} election_title={electionData.title} election_date={electionData.date} />
+                                                    <GuanatorDetailTCard data={userData} election_title={electionData.title} election_date={electionData.date} election_id={electionData.id} />
                                                     : <></>
                                             }
                                         </>

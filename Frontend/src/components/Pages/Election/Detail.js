@@ -1,28 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-
-import { Card, Col, Dropdown, Breadcrumb, Nav, Row, Tab, FormGroup, Form, Button } from "react-bootstrap";
+import { Card, Col, Dropdown, Breadcrumb, Nav, Row, Tab, FormGroup, Form } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
 import moment from 'moment';
-import Swal from "sweetalert2";
 import Dropzone from "react-dropzone";
-import { useDispatch, useSelector } from 'react-redux';
-import { TextareaAutosize } from "@mui/material";
-import { images } from "../../../components/Pages/Gallery/data";
+import Swal from "sweetalert2";
 import CandidateCard from "../../Cards/CandidateCard";
 import { backend_url } from "../../Constant/Config"
 import ImageDashComponent from "../../Image/ImageDashComponent";
-import CandidateDetailTCard from "../../Cards/CandidateDetailTCard";
 const ElectionsDetail = () => {
     let { id } = useParams();
-    const rankList = useSelector(state => state.rank);
-    const roleList = useSelector(state => state.role);
     const [electionData, setElectionData] = React.useState({ id: id, title: "", description: "", location: "", date: "", type: "", image: "" });
     const [electionUpData, setElectionUpData] = React.useState({ id: id, title: "", description: "", location: "", date: "", type: "", image: "" });
     const [candidateData, setCandidateData] = React.useState();
-    const [candidateDetail, setCandidateDetail] = React.useState({ avatar: "", fname: "", lname: "" });
-    const [candidateDetailC, setCandidateDetailC] = React.useState({ supervisors: 0, guarantors: 0, checkers: 0, sorters: 0 });
     const [count, setCount] = React.useState({ users: 0, guarantees: 0, others: 0 });
     React.useEffect(() => {
         fetch(backend_url + 'getElectionId/?id=' + id, { method: 'GET' })
@@ -35,8 +25,6 @@ const ElectionsDetail = () => {
             .then(response => response.json())
             .then(data => {
                 setCandidateData(data.data)
-                if (data.data.length !== 0)
-                    setCandidateDetail(data.data[0]);
             });
         fetch(backend_url + 'getElectionCount/?id=' + id, { method: 'GET' })
             .then(response => response.json())
@@ -92,13 +80,6 @@ const ElectionsDetail = () => {
                     });
             }
         })
-    }
-    const getCandidateDetail = (cid) => {
-        fetch(backend_url + 'getElectionCandidateId/?id=' + cid, { method: 'GET' })
-            .then(response => response.json())
-            .then(data => {
-                setCandidateDetail(data.data);
-            });
     }
     return (
         <div>
@@ -258,11 +239,8 @@ const ElectionsDetail = () => {
                                                                             candidateData && candidateData.map(element => {
                                                                                 return (
                                                                                     <Col sm={12} md={6} lg={6} xl={3} key={element.id}>
-                                                                                        {/* <span onClick={() => { getCandidateDetail(element.id) }} className="pointer_action_button">
-                                                                                            <CandidateCard name={element.fname + " " + element.lname} email={element.email} avatar={element.avatar} />
-                                                                                        </span> */}
                                                                                         <a href={`${process.env.PUBLIC_URL} /elections/` + id + `/` + element.id} className="pointer_action_button">
-                                                                                            <CandidateCard name={element.fname + " " + element.lname} email={element.email} avatar={element.avatar} />
+                                                                                            <CandidateCard name={element.fname + " " + element.lname} email={element.email} avatar={element.avatar} userid={element.id} eid={id} />
                                                                                         </a>
                                                                                     </Col>
                                                                                 )
@@ -779,12 +757,10 @@ const ElectionsDetail = () => {
                 </Col>
                 <Col xl={3} lg={12} md={12} sm={12}>
                     <Col xl={12} lg={12}>
-                        {/* <CandidateDetailTCard data={candidateDetail} count={candidateDetailC} election_title={electionData.title} election_date={electionData.date} /> */}
                         <Card className=" user-wideget user-wideget-widget widget-user">
                             <div className="widget-user-header br-te-5  br-ts-5  bg-primary">
                             </div>
                             <div className="widget-user-image">
-                                {/* <AvatarUserComponent imagePath={props.data.avatar} /> */}
                                 <img alt="avatar" className="rounded-circle" src={require("../../../assets/img/user.png")} />
                             </div>
                             <div className="user-wideget-footer text-center">
@@ -808,7 +784,7 @@ const ElectionsDetail = () => {
                                     <li><strong>Role:</strong> {" "} </li>
                                     <li><strong>Rank:</strong> {" "} </li>
                                     <li><strong>Mobile:</strong> {" "} </li>
-                                    <li><strong>Em@il:</strong> <a href="#">{" "} </a></li></ul>
+                                    <li><strong>Em@il:</strong> {" "} </li></ul>
                             </div>
                             <a href="https://thevirtualrealitytrip.com/wp-login.php?action=logout&amp;_wpnonce=95af37bd92" className="btn btn-danger  btn-rounded">Logout</a>
                         </Card>

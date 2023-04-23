@@ -1,40 +1,28 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-
-import { Card, Col, Dropdown, Breadcrumb, Nav, Row, Tab, FormGroup, Form, Button, ProgressBar, Modal } from "react-bootstrap";
+import { Card, Button, Modal } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
-import moment from 'moment';
 import Swal from "sweetalert2";
-import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from 'react-redux';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { TextareaAutosize } from "@mui/material";
-import { images } from "../../../../components/Pages/Gallery/data";
-import CandidateCard from "../../../Cards/CandidateCard";
 import { backend_url } from "../../../Constant/Config"
-import ImageDashComponent from "../../../Image/ImageDashComponent";
-import CandidateDetailTCard from "../../../Cards/CandidateDetailTCard";
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
-import Creatable from "react-select/creatable";
 import Select from "react-select";
-// import { Breadcrumb, Card, Carousel, Col, ProgressBar, Row } from 'react-bootstrap';
+import { getCandidateDetail } from "../../../../redux/actions/userDetailAction";
 const CandidateDetail = () => {
     let { id } = useParams();
     let { userid } = useParams();
+    const dispatch = useDispatch();
     const [show, setShow] = React.useState({ flag: false });
     const handleClose = () => setShow({ flag: false });
     const handleShow = () => setShow({ flag: true });
     const rankList = useSelector(state => state.rank);
     const roleList = useSelector(state => state.role);
-    const [electionData, setElectionData] = React.useState({ id: id, title: "", description: "", location: "", date: "", type: "", image: "" });
-    const [userData, setUserData] = React.useState({ id: userid });
-    const [teamcount, setTeamCount] = React.useState();
-    const [guaranteesCount, setGuaranteesCount] = React.useState({ my: 0, all: 0 });
+    const userDetail = useSelector(state => state.userDetail);
     const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "id", sorter: "desc", pagenum: 1 });
-    const [allData, setAllData] = React.useState({ data: [], count: 0 });
     const [allUser, setAllUser] = React.useState(null);
     const [selectedUser, setSelectedUser] = React.useState();
     const candidateColums = [
@@ -115,74 +103,17 @@ const CandidateDetail = () => {
     ]
     React.useEffect(() => {
         const fetchData = async () => {
-            await fetch(backend_url + 'getElectionId/?id=' + id, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-                    setElectionData(data.data);
-                });
             await fetch(backend_url + 'getUserElection/?id=' + id, { method: 'GET' })
                 .then(response => response.json())
                 .then(data => {
                     setAllUser(data.data);
-                });
-            await fetch(backend_url + 'getGuaranteesCount/?id=' + userid + '&eid=' + id, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-                    setGuaranteesCount(data.data);
-                });
-            await fetch(backend_url + 'getUserId/?id=' + userid, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-                    setUserData(data.data)
-                });
-            await fetch(backend_url + 'getUserTeamCount/?id=' + userid, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-                    setTeamCount(data.data);
                 });
             getData(postData);
         };
         fetchData().catch(err => console.log(err));
     }, [])
     const getData = (data) => {
-        fetch(backend_url + 'getMyTeamId/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum + '&userid=' + userid, { method: 'GET' })
-            .then(response => response.json())
-            .then(async data => {
-                setAllData({ data: data.data, count: data.count })
-            });
-    }
-    const showCount = (type) => {
-        let total = 0;
-        switch (type) {
-            case "total":
-                teamcount && teamcount.map(ele => {
-                    total += ele.count;
-                })
-                break;
-            case "supervisor":
-                teamcount && teamcount.map(ele => {
-                    if (ele.name === "supervisor") total = ele.count
-                })
-                break;
-            case "guarantor":
-                teamcount && teamcount.map(ele => {
-                    if (ele.name === "guarantor") total = ele.count
-                })
-                break;
-            case "checker":
-                teamcount && teamcount.map(ele => {
-                    if (ele.name === "checker") total = ele.count
-                })
-                break;
-            case "sorter":
-                teamcount && teamcount.map(ele => {
-                    if (ele.name === "sorter") total = ele.count
-                })
-                break;
-            default:
-                break;
-        }
-        return total;
+        getCandidateDetail({ data: postData, userid: userid }, dispatch);
     }
     const changeData = (data) => {
         let resultData = [];
@@ -225,12 +156,11 @@ const CandidateDetail = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                const data = postData
-                fetch(backend_url + 'delMyTeamId/?id=' + id + '&limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum + '&userid=' + userid, { method: 'GET' })
+                fetch(backend_url + 'delMyTeamId/?id=' + id, { method: 'GET' })
                     .then(response => response.json())
                     .then(data => {
                         Swal.fire("Deleted!", "Your data has been deleted.", "success");
-                        setAllData({ data: data.data, count: data.count })
+                        getCandidateDetail({ data: postData, userid: userid }, dispatch);
                     });
             }
         });
@@ -259,7 +189,7 @@ const CandidateDetail = () => {
     };
     const checkableAdd = () => {
         let a = 0;
-        allData.data && allData.data.map(ele => {
+        userDetail.userData && userDetail.userData.map(ele => {
             if (ele.fname === selectedUser.fname && ele.lname === selectedUser.lname && ele.email === selectedUser.email && ele.cid - selectedUser.cid === 0) {
                 a = 1;
             }
@@ -280,6 +210,49 @@ const CandidateDetail = () => {
                 window.location.href = `${process.env.PUBLIC_URL}/elections/` + id + `/` + data.data;
             });
     }
+    const downloadFile = ({ data, fileName, fileType }) => {
+        const blob = new Blob([data], { type: fileType })
+
+        const a = document.createElement('a')
+        a.download = fileName
+        a.href = window.URL.createObjectURL(blob)
+        const clickEvt = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+        })
+        a.dispatchEvent(clickEvt)
+        a.remove()
+    }
+    const exportToCsv = (e) => {
+        e.preventDefault()
+
+        // Headers for each column
+        let headers = ['No,First Name,Last Name,Rank,Role,Mobile, Civil Id, Username']
+
+        // Convert users data to a csv userDetail.userData
+        let csvData = changeData(userDetail.userData).reduce((acc, user) => {
+            const { no, fname, lname, rank, role, mobile, cid, username } = user;
+            let rankStr = "";
+            let roleStr = "";
+            rankList.data.map(ele => {
+                if (ele.id - rank === 0)
+                    rankStr = ele.name;
+            }, []);
+            roleList.data.map(ele => {
+                if (ele.id - role === 0)
+                    roleStr = ele.name;
+            }, []);
+            acc.push([no, fname, lname, rankStr, roleStr, mobile, cid, username].join(','))
+            return acc
+        }, [])
+
+        downloadFile({
+            data: [...headers, ...csvData].join('\n'),
+            fileName: 'candidate.csv',
+            fileType: 'text/csv',
+        })
+    }
     return (
         <Card className="card-primary customs-cards">
             <Card.Header className=" pb-3">
@@ -290,7 +263,7 @@ const CandidateDetail = () => {
                             <i className="fe fe-user-plus me-1"></i> Add New Team Member
                         </Button>
                         &nbsp;
-                        <Button variant='' className="btn-sm btn-primary btn-rounded">
+                        <Button variant='' className="btn-sm btn-primary btn-rounded" onClick={exportToCsv}>
                             <i className="fe fe-download me-1"></i> Download
                         </Button>
                     </div>
@@ -303,7 +276,6 @@ const CandidateDetail = () => {
                         </Button>
                     </Modal.Header>
                     <Modal.Body className="modal-body">
-                        <h6></h6>
                         <div className=" SlectBox">
                             <Select
                                 value={selectedUser}
@@ -330,7 +302,7 @@ const CandidateDetail = () => {
                             className="btn ripple btn-primary"
                             type="button"
                             onClick={() => {
-                                if (checkableAdd() === true) {
+                                if (checkableAdd() === true || selectedUser.id - userid === 0) {
                                     handleClose();
                                     Swal.fire({
                                         title: "Add Warning",
@@ -380,7 +352,7 @@ const CandidateDetail = () => {
                             </label>
                             <DataTable
                                 columns={candidateColums}
-                                data={changeData(allData.data)}
+                                data={changeData(userDetail.userData)}
                                 defaultSortField="id"
                                 defaultSortAsc={false}
                                 pagination={false}
@@ -388,7 +360,7 @@ const CandidateDetail = () => {
                                 onSort={tableAction}
                             />
                             <label className="float-end" style={{ marginTop: "5px" }}>
-                                <Pagination page={postData.pagenum} count={Math.ceil(allData.count / postData.limit)} showFirstButton showLastButton onChange={changePagenum} />
+                                <Pagination page={postData.pagenum} count={Math.ceil(userDetail.userDataCount / postData.limit)} showFirstButton showLastButton onChange={changePagenum} />
                             </label>
                         </span>
                     </span>

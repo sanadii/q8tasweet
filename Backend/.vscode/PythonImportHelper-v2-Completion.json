@@ -1,0 +1,1292 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "url",
+        "importPath": "django.conf.urls",
+        "description": "django.conf.urls",
+        "isExtraImport": true,
+        "detail": "django.conf.urls",
+        "documentation": {}
+    },
+    {
+        "label": "url",
+        "importPath": "django.conf.urls",
+        "description": "django.conf.urls",
+        "isExtraImport": true,
+        "detail": "django.conf.urls",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "connection",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "views",
+        "importPath": "restapi",
+        "description": "restapi",
+        "isExtraImport": true,
+        "detail": "restapi",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http.response",
+        "description": "django.http.response",
+        "isExtraImport": true,
+        "detail": "django.http.response",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "default_storage",
+        "importPath": "django.core.files.storage",
+        "description": "django.core.files.storage",
+        "isExtraImport": true,
+        "detail": "django.core.files.storage",
+        "documentation": {}
+    },
+    {
+        "label": "ContentFile",
+        "importPath": "django.core.files.base",
+        "description": "django.core.files.base",
+        "isExtraImport": true,
+        "detail": "django.core.files.base",
+        "documentation": {}
+    },
+    {
+        "label": "serialize",
+        "importPath": "django.core.serializers",
+        "description": "django.core.serializers",
+        "isExtraImport": true,
+        "detail": "django.core.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "serve",
+        "importPath": "django.views.static",
+        "description": "django.views.static",
+        "isExtraImport": true,
+        "detail": "django.views.static",
+        "documentation": {}
+    },
+    {
+        "label": "FileResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "backend.asgi",
+        "description": "backend.asgi",
+        "peekOfCode": "application = get_asgi_application()",
+        "detail": "backend.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'sy#_4(_9_j^z(-j23cnh!(nw6whjoox0+89v#(dj8t!ovru(tz'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']\nCORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_CREDENTIALS = True",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "SECRET_KEY = 'sy#_4(_9_j^z(-j23cnh!(nw6whjoox0+89v#(dj8t!ovru(tz'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']\nCORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_CREDENTIALS = True\nCORS_ORIGIN_WHITELIST = [\n    \"https://example.com\",\n    \"https://sub.example.com\",\n    \"http://localhost:8080\",",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']\nCORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_CREDENTIALS = True\nCORS_ORIGIN_WHITELIST = [\n    \"https://example.com\",\n    \"https://sub.example.com\",\n    \"http://localhost:8080\",\n    \"http://127.0.0.1:9000\"\n]",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']\nCORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_CREDENTIALS = True\nCORS_ORIGIN_WHITELIST = [\n    \"https://example.com\",\n    \"https://sub.example.com\",\n    \"http://localhost:8080\",\n    \"http://127.0.0.1:9000\"\n]\n# Application definition",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ORIGIN_ALLOW_ALL",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_CREDENTIALS = True\nCORS_ORIGIN_WHITELIST = [\n    \"https://example.com\",\n    \"https://sub.example.com\",\n    \"http://localhost:8080\",\n    \"http://127.0.0.1:9000\"\n]\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_CREDENTIALS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = True\nCORS_ORIGIN_WHITELIST = [\n    \"https://example.com\",\n    \"https://sub.example.com\",\n    \"http://localhost:8080\",\n    \"http://127.0.0.1:9000\"\n]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ORIGIN_WHITELIST",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "CORS_ORIGIN_WHITELIST = [\n    \"https://example.com\",\n    \"https://sub.example.com\",\n    \"http://localhost:8080\",\n    \"http://127.0.0.1:9000\"\n]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',\n    'restapi',\n    'corsheaders',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "REST_FRAMEWORK",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_PARSER_CLASSES': (\n        'rest_framework.parsers.FormParser',\n        'rest_framework.parsers.MultiPartParser'\n    )\n}\nMIDDLEWARE = [\n    'restapi.middleware.MyMiddleware',\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    'restapi.middleware.MyMiddleware',\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "ROOT_URLCONF = 'backend.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "WSGI_APPLICATION",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "WSGI_APPLICATION = 'backend.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/3.0/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.mysql',\n        'NAME': 'election',\n        'USER': 'root',\n        'PASSWORD': '',\n        'HOST': '127.0.0.1',",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.mysql',\n        'NAME': 'election',\n        'USER': 'root',\n        'PASSWORD': '',\n        'HOST': '127.0.0.1',\n        'PORT': '3306',\n    }\n}",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.0/howto/static-files/\nSTATIC_URL = '/static/'\nMEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.0/howto/static-files/\nSTATIC_URL = '/static/'\nMEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.0/howto/static-files/\nSTATIC_URL = '/static/'\nMEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_L10N",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "USE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.0/howto/static-files/\nSTATIC_URL = '/static/'\nMEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.0/howto/static-files/\nSTATIC_URL = '/static/'\nMEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "STATIC_URL = '/static/'\nMEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Backend/images')\nMEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "backend.settings",
+        "description": "backend.settings",
+        "peekOfCode": "MEDIA_URL = '/Backend/images/'",
+        "detail": "backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.urls",
+        "description": "backend.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    url(r'', include('restapi.urls'))\n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "detail": "backend.urls",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "backend.wsgi",
+        "description": "backend.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "backend.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "restapi.migrations.0001_initial",
+        "description": "restapi.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='cards',\n            fields=[\n                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('number', models.IntegerField()),",
+        "detail": "restapi.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "restapi.migrations.0002_auto_20200726_0425",
+        "description": "restapi.migrations.0002_auto_20200726_0425",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('restapi', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='transaction',\n            name='card',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='restapi.Cards'),\n        ),",
+        "detail": "restapi.migrations.0002_auto_20200726_0425",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "restapi.migrations.0003_auto_20230410_1419",
+        "description": "restapi.migrations.0003_auto_20230410_1419",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('restapi', '0002_auto_20200726_0425'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='TbElections',\n            fields=[\n                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('election_id', models.IntegerField(blank=True, null=True)),",
+        "detail": "restapi.migrations.0003_auto_20230410_1419",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "restapi.migrations.0004_tbteammembers",
+        "description": "restapi.migrations.0004_tbteammembers",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('restapi', '0003_auto_20230410_1419'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='TbTeamMembers',\n            fields=[\n                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('candidate_id', models.IntegerField(blank=True, null=True)),",
+        "detail": "restapi.migrations.0004_tbteammembers",
+        "documentation": {}
+    },
+    {
+        "label": "RestapiConfig",
+        "kind": 6,
+        "importPath": "restapi.apps",
+        "description": "restapi.apps",
+        "peekOfCode": "class RestapiConfig(AppConfig):\n    name = 'restapi'",
+        "detail": "restapi.apps",
+        "documentation": {}
+    },
+    {
+        "label": "MyMiddleware",
+        "kind": 6,
+        "importPath": "restapi.middleware",
+        "description": "restapi.middleware",
+        "peekOfCode": "class MyMiddleware:\n    def __init__(self, get_response):\n        self.get_response = get_response\n    def __call__(self, request):\n        response = self.get_response(request)\n        response['X-My-Header'] = {\n            'Content-Tyupe': \"application/json\"\n        }\n        response['Content-Type'] = \"application/json\"\n        return response",
+        "detail": "restapi.middleware",
+        "documentation": {}
+    },
+    {
+        "label": "TbElections",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbElections(models.Model):\n    image = models.CharField(max_length=255, blank=True, null=True)\n    title = models.CharField(max_length=255, blank=True, null=True)\n    description = models.CharField(max_length=255, blank=True, null=True)\n    status = models.IntegerField(blank=True, null=True)\n    date = models.DateField(blank=True, null=True)\n    location = models.CharField(max_length=255, blank=True, null=True)\n    type = models.CharField(max_length=255, blank=True, null=True)\n    moderators = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbGuarantees",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbGuarantees(models.Model):\n    user_id = models.IntegerField(blank=True, null=True)\n    election_id = models.IntegerField(blank=True, null=True)\n    guarantor_id = models.IntegerField(blank=True, null=True)\n    guarantee = models.IntegerField(blank=True, null=True)\n    attended = models.IntegerField(blank=True, null=True)\n    status = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbMenu",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbMenu(models.Model):\n    name = models.CharField(max_length=255, blank=True, null=True)\n    url = models.CharField(max_length=255, blank=True, null=True)\n    # Field name made lowercase.\n    parentid = models.IntegerField(db_column='parentId', blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbPermission",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbPermission(models.Model):\n    name = models.CharField(max_length=255, blank=True, null=True)\n    description = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)\n    class Meta:\n        managed = False",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbSorting",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbSorting(models.Model):\n    no = models.IntegerField(primary_key=True)\n    name = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)\n    class Meta:\n        managed = False",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbUserRank",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbUserRank(models.Model):\n    name = models.CharField(max_length=255, blank=True, null=True)\n    # Field name made lowercase.\n    permissionid = models.IntegerField(\n        db_column='permissionId', blank=True, null=True)\n    # Field name made lowercase.\n    parentid = models.IntegerField(db_column='parentId', blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbUsers",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbUsers(models.Model):\n    fname = models.CharField(max_length=255, blank=True, null=True)\n    lname = models.CharField(max_length=255, blank=True, null=True)\n    # avatar = models.CharField(max_length=255, blank=True, null=True)\n    role = models.CharField(max_length=255, blank=True, null=True)\n    cid = models.IntegerField(blank=True, null=True)\n    mobile = models.CharField(max_length=255, blank=True, null=True)\n    email = models.CharField(max_length=255, blank=True, null=True)\n    username = models.CharField(max_length=255, blank=True, null=True)\n    password = models.CharField(max_length=255, blank=True, null=True)",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbUsersRole",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbUsersRole(models.Model):\n    name = models.CharField(max_length=255, blank=True, null=True)\n    # Field name made lowercase.\n    permissionid = models.IntegerField(\n        db_column='permissionId', blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbVoters",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbVoters(models.Model):\n    election_id = models.IntegerField(blank=True, null=True)\n    civil_id = models.IntegerField(blank=True, null=True)\n    name = models.CharField(max_length=255, blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateTimeField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateTimeField(blank=True, null=True)\n    class Meta:",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbPermissionMenu",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbPermissionMenu(models.Model):\n    permissionid = models.IntegerField(\n        db_column='permissionId', blank=True, null=True)\n    menuid = models.IntegerField(db_column='menuId', blank=True, null=True)\n    value = models.CharField(max_length=255, blank=True, null=True)\n    label = models.CharField(max_length=255, blank=True, null=True)\n    class Meta:\n        managed = False\n        db_table = 'tb_permissionmenu'\nclass TbTeamMembers(models.Model):",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "TbTeamMembers",
+        "kind": 6,
+        "importPath": "restapi.models",
+        "description": "restapi.models",
+        "peekOfCode": "class TbTeamMembers(models.Model):\n    candidate_id = models.IntegerField(blank=True, null=True)\n    teamuser_id = models.IntegerField(blank=True, null=True)\n    del_flag = models.IntegerField(blank=True, null=True)\n    create_by = models.IntegerField(blank=True, null=True)\n    create_date = models.DateField(blank=True, null=True)\n    update_by = models.IntegerField(blank=True, null=True)\n    update_date = models.DateField(blank=True, null=True)\n    class Meta:\n        managed = False",
+        "detail": "restapi.models",
+        "documentation": {}
+    },
+    {
+        "label": "userSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class userSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUsers\n        fields = \"__all__\"\nclass electionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbElections\n        fields = \"__all__\"\nclass menuSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "electionSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class electionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbElections\n        fields = \"__all__\"\nclass menuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbMenu\n        fields = \"__all__\"\nclass permissionSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "menuSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class menuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbMenu\n        fields = \"__all__\"\nclass permissionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermission\n        fields = \"__all__\"\nclass permissionMenuSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "permissionSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class permissionSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermission\n        fields = \"__all__\"\nclass permissionMenuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermissionMenu\n        fields = \"__all__\"\nclass roleSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "permissionMenuSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class permissionMenuSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbPermissionMenu\n        fields = \"__all__\"\nclass roleSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUsersRole\n        fields = \"__all__\"\nclass rankSerializer(serializers.ModelSerializer):\n    class Meta:",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "roleSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class roleSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUsersRole\n        fields = \"__all__\"\nclass rankSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUserRank\n        fields = \"__all__\"",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "rankSerializer",
+        "kind": 6,
+        "importPath": "restapi.serializers",
+        "description": "restapi.serializers",
+        "peekOfCode": "class rankSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = TbUserRank\n        fields = \"__all__\"",
+        "detail": "restapi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "restapi.urls",
+        "description": "restapi.urls",
+        "peekOfCode": "urlpatterns = [\n    url(r'upLoadImage', views.upLoadImage),\n    url(r'getImage/', views.getImage),\n    #\n    url(r'getElection/', views.getElection),\n    url(r'delElection/', views.delElection),\n    url(r'addElection', views.addElection),\n    url(r'updateElection', views.updateElection),\n    #\n    url(r'getAllElection', views.getAllElection),",
+        "detail": "restapi.urls",
+        "documentation": {}
+    },
+    {
+        "label": "upLoadImage",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def upLoadImage(request):\n    if request.method == 'POST':\n        image = request.FILES.get('image')\n        letters = string.ascii_lowercase\n        result_str = ''.join(random.choice(letters) for i in range(20))\n        if image:\n            with open(os.path.join(settings.MEDIA_ROOT, result_str + image.name), 'wb+') as destination:\n                for chunk in image.chunks():\n                    destination.write(chunk)\n            return JsonResponse({'success': True, 'url': result_str + image.name})",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getImage",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getImage(request):\n    queryprms = request.GET\n    path = queryprms.get('imagePath', 1)\n    image_path = os.path.join(settings.MEDIA_ROOT, f'{path}')\n    with open(image_path, \"rb\") as image_file:\n        encoded_string = base64.b64encode(open(image_path, \"rb\").read())\n    return JsonResponse({'data': encoded_string.decode(\"utf-8\")})\n@api_view(['GET'])\ndef getMenu(request):\n    menus = TbMenu.objects.all()",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getMenu",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getMenu(request):\n    menus = TbMenu.objects.all()\n    menus_serializer = menuSerializer(menus, many=True)\n    return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['POST'])\ndef addMenu(request):\n    data = json.loads(request.body)\n    data_data = TbMenu(name=data[\"name\"], url=data[\"url\"],\n                       parentid=data[\"parentId\"], del_flag=0)\n    data_data.save()",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addMenu",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addMenu(request):\n    data = json.loads(request.body)\n    data_data = TbMenu(name=data[\"name\"], url=data[\"url\"],\n                       parentid=data[\"parentId\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef delMenu(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delMenu",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delMenu(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    TbMenu.objects.filter(id=id).delete()\n    menus = TbMenu.objects.all()\n    menus_serializer = menuSerializer(menus, many=True)\n    return JsonResponse({\"data\": menus_serializer.data}, safe=False)\n@api_view(['GET'])\ndef getElection(request):\n    queryprms = request.GET",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getElection(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    election_data = TbElections.objects.raw(\n        'select * from tb_elections where title rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    election_serializer = electionSerializer(election_data, many=True)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getAllElection(request):\n    data_data = TbElections.objects.all()\n    data_serializer = electionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getPrev5Election(request):\n    data_data = TbElections.objects.raw(\n        'select * from tb_elections where del_flag = 0 and date < SYSDATE() order by date desc limit 5')\n    data_serializer = electionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getPrev5Election",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getPrev5Election(request):\n    data_data = TbElections.objects.raw(\n        'select * from tb_elections where del_flag = 0 and date < SYSDATE() order by date desc limit 5')\n    data_serializer = electionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getUpElection(request):\n    data_data = TbElections.objects.raw(\n        'select * from tb_elections where del_flag = 0 and date-0 >= FLOOR((SYSDATE()-0)/1000000)')\n    data_serializer = electionSerializer(data_data, many=True)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getUpElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getUpElection(request):\n    data_data = TbElections.objects.raw(\n        'select * from tb_elections where del_flag = 0 and date-0 >= FLOOR((SYSDATE()-0)/1000000)')\n    data_serializer = electionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['POST'])\ndef getIdUser(request):\n    data = json.loads(request.body)\n    data_data = TbUsers.objects.raw('select id from tb_users where fname = \"' +\n                                    data[\"fname\"] + '\" and lname = \"' + data[\"lname\"] + '\" and cid = \"' + str(data[\"cid\"]) + '\" and username = \"' + data[\"username\"] + '\"')",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getIdUser",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getIdUser(request):\n    data = json.loads(request.body)\n    data_data = TbUsers.objects.raw('select id from tb_users where fname = \"' +\n                                    data[\"fname\"] + '\" and lname = \"' + data[\"lname\"] + '\" and cid = \"' + str(data[\"cid\"]) + '\" and username = \"' + data[\"username\"] + '\"')\n    return JsonResponse({\"data\": data_data[0].id, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getUserElection(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getUserElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getUserElection(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where del_flag = 0 and election_option = ' + id)\n    data_serializer = userSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getCandidateElection(request):\n    queryprms = request.GET",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getCandidateElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getCandidateElection(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where del_flag = 0 and rank = 2 and election_option = ' + id)\n    data_serializer = userSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getCandidateElection(request):\n    queryprms = request.GET",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getCandidateElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getCandidateElection(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where del_flag = 0 and rank = 2 and election_option = ' + id)\n    data_serializer = userSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getElectionId(request):\n    queryprms = request.GET",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getElectionId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getElectionId(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbElections.objects.raw(\n        'select * from tb_elections where id = ' + id)\n    data_serializer = electionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data[0], \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getUserId(request):\n    queryprms = request.GET",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getUserId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getUserId(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw('select * from tb_users where id = ' + id)\n    data_serializer = userSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data[0], \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getCountCandidate(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getCountCandidate",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getCountCandidate(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_count = TbUsers.objects.raw(\"select id, count(*) as count from tb_users where del_flag = 0 and election_option = \" +\n                                     id + \" and rank = (select id from tb_user_rank where name = 'candidate')\")\n    data_total = TbUsers.objects.raw(\n        \"select id, count(*) as count from tb_users where del_flag = 0 and rank = (select id from tb_user_rank where name = 'candidate')\")\n    return JsonResponse({\"data\": {'count': data_count[0].count, 'total': data_total[0].count}, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getUserTeamCount(request):",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getUserTeamCount",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getUserTeamCount(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    cursor = connection.cursor()\n    cursor.execute(\"select id,a.rank, b.name, a.count from (select u.rank, count(*) as count from (select teamuser_id from tb_team_members where candidate_id = \" + id +\n                   \" and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id group by u.rank) as a join (select * from tb_user_rank where del_flag = 0) as b on a.rank = b.id\", None)\n    objs = cursor.fetchall()\n    json_data = []\n    for obj in objs:\n        json_data.append(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getSupervisorTeamCount",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getSupervisorTeamCount(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    cursor = connection.cursor()\n    cursor.execute(\"select id,a.rank, b.name, a.count from (select u.rank, count(*) as count from (select candidate_id from tb_team_members where teamuser_id = \" + id +\n                   \" and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.candidate_id = u.id group by u.rank) as a join (select * from tb_user_rank where del_flag = 0) as b on a.rank = b.id\", None)\n    objs = cursor.fetchall()\n    json_data = []\n    for obj in objs:\n        json_data.append(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getGuaranteesCount",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getGuaranteesCount(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    eid = queryprms.get('eid', 1)\n    data_guarantees = TbGuarantees.objects.raw(\n        \"select id, count(*) as count from tb_guarantees where del_flag = 0 and user_id = \" + id + \" and election_id = \" + eid)\n    data_guarantees_all = TbGuarantees.objects.raw(\n        \"select id, count(*) as count from tb_guarantees where del_flag = 0 and election_id = \" + eid)\n    return JsonResponse({\"data\": {'all': data_guarantees_all[0].count, 'my': data_guarantees[0].count}, \"code\": 200}, safe=False)\n@api_view(['GET'])",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getElectionCount",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getElectionCount(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_users = TbUsers.objects.raw(\n        \"select id, count(*) as count from tb_users where del_flag = 0 and election_option = \" + id)\n    data_guarantees = TbGuarantees.objects.raw(\n        \"select id, count(*) as count from tb_guarantees where del_flag = 0 and election_id = \" + id)\n    data_others = TbUsers.objects.raw(\n        \"select id, count(*) as count from tb_users where del_flag = 0 and election_option != \" + id)\n    return JsonResponse({\"data\": {'users': data_users[0].count, 'guarantees': data_guarantees[0].count, 'others': data_others[0].count}, \"code\": 200}, safe=False)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getElectionCandidate",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getElectionCandidate(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw(\"select * from tb_users where del_flag = 0 and election_option = \" +\n                                    id + \" and rank = (select id from tb_user_rank where name = 'candidate')\")\n    data_serializer = userSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getElectionCandidateId(request):\n    queryprms = request.GET",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getElectionCandidateId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getElectionCandidateId(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_data = TbUsers.objects.raw(\"select * from tb_users where id = \" + id)\n    data_serializer = userSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data[0], \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef delElection(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delElection(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    election = TbElections.objects.raw(\n        'select * from tb_elections where id = ' + id)[0]",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addElection(request):\n    data = json.loads(request.body)\n    election = TbElections(image=data[\"image\"], title=data[\"title\"], description=data[\"description\"], status=data[\"status\"],\n                           date=data[\"date\"], location=data[\"location\"], type=data[\"type\"], moderators=data[\"moderators\"], del_flag=0)\n    election.save()\n    return JsonResponse({\"data\": \"\", \"count\": 0, \"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateElection(request):\n    data = json.loads(request.body)\n    election = TbElections.objects.raw(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateElection",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def updateElection(request):\n    data = json.loads(request.body)\n    election = TbElections.objects.raw(\n        'select * from tb_elections where id = ' + str(data['id']))[0]\n    election.image = data['image']\n    election.title = data['title']\n    election.description = data['description']\n    election.status = data['status']\n    election.date = data['date']\n    election.location = data['location']",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getPermission",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getPermission(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbPermission.objects.raw(\n        'select * from tb_permission where del_flag = 0 and name rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = permissionSerializer(data_data, many=True)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllPermission",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getAllPermission(request):\n    data_data = TbPermission.objects.all()\n    data_serializer = permissionSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['POST'])\ndef addPermission(request):\n    data = json.loads(request.body)\n    data_data = TbPermission(\n        name=data[\"name\"], description=data[\"description\"], del_flag=0)\n    data_data.save()",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addPermission",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addPermission(request):\n    data = json.loads(request.body)\n    data_data = TbPermission(\n        name=data[\"name\"], description=data[\"description\"], del_flag=0)\n    data_data.save()\n    data_now = TbPermission.objects.raw('select * from tb_permission where name = \"' +\n                                        data[\"name\"] + '\" and description = \"' + data[\"description\"] + '\"')[0]\n    for x in data[\"menu\"]:\n        data_row = TbPermissionMenu(\n            permissionid=data_now.id, menuid=x['menuId'], value=x['value'], label=x['label'])",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updatePermission",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def updatePermission(request):\n    data = json.loads(request.body)\n    data_data = TbPermission.objects.raw(\n        'select * from tb_permission where id = ' + str(data['id']))[0]\n    data_data.name = data['name']\n    data_data.description = data['description']\n    data_data.save()\n    TbPermissionMenu.objects.filter(permissionid=data['id']).delete()\n    for x in data[\"menu\"]:\n        data_row = TbPermissionMenu(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delPermission",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delPermission(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    TbPermission.objects.filter(id=id).delete()\n    TbPermissionMenu.objects.filter(permissionid=id).delete()",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getRole",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getRole(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbUsersRole.objects.raw(\n        'select * from tb_users_role where del_flag = 0 and name rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = roleSerializer(data_data, many=True)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addRole",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addRole(request):\n    data = json.loads(request.body)\n    data_data = TbUsersRole(\n        name=data[\"name\"], permissionid=data[\"permissionid\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateRole(request):\n    data = json.loads(request.body)\n    data_data = TbUsersRole.objects.raw(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateRole",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def updateRole(request):\n    data = json.loads(request.body)\n    data_data = TbUsersRole.objects.raw(\n        'select * from tb_users_role where id = ' + str(data['id']))[0]\n    data_data.name = data['name']\n    data_data.permissionid = data['permissionid']\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef delRole(request):",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delRole",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delRole(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    TbUsersRole.objects.filter(id=id).delete()\n    data_data = TbUsersRole.objects.raw(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getRank",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getRank(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbUserRank.objects.raw(\n        'select * from tb_user_rank where del_flag = 0 and name rlike \"' + keyword + '\" order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = rankSerializer(data_data, many=True)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addRank",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addRank(request):\n    data = json.loads(request.body)\n    data_data = TbUserRank(\n        name=data[\"name\"], permissionid=data[\"permissionid\"], parentid=data[\"parentid\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateRank(request):\n    data = json.loads(request.body)\n    data_data = TbUserRank.objects.raw(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateRank",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def updateRank(request):\n    data = json.loads(request.body)\n    data_data = TbUserRank.objects.raw(\n        'select * from tb_user_rank where id = ' + str(data['id']))[0]\n    data_data.name = data['name']\n    data_data.permissionid = data['permissionid']\n    data_data.parentid = data['parentid']\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delRank",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delRank(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    TbUserRank.objects.filter(id=id).delete()\n    data_data = TbUserRank.objects.raw(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllRank",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getAllRank(request):\n    data_data = TbUserRank.objects.all()\n    data_serializer = rankSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getAllRole(request):\n    data_data = TbUsersRole.objects.all()\n    data_serializer = roleSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getAllRole",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getAllRole(request):\n    data_data = TbUsersRole.objects.all()\n    data_serializer = roleSerializer(data_data, many=True)\n    return JsonResponse({\"data\": data_serializer.data, \"code\": 200}, safe=False)\n@api_view(['GET'])\ndef getUser(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getUser",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getUser(request):\n    queryprms = request.GET\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where del_flag = 0 and (fname rlike \"' + keyword + '\" or lname rlike \"' + keyword + '\" or cid rlike \"' + keyword + '\" or mobile rlike \"' + keyword + '\") order by ' + filter + ' ' + sorter + ' limit ' + str(limit) + ' offset ' + str(limit * (pagenum - 1)))\n    data_serializer = (userSerializer(data_data, many=True))",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addUser",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addUser(request):\n    data = json.loads(request.body)\n    password = hashlib.sha1(data[\"password\"].encode('utf-8')).hexdigest()\n    # data_data = TbUsers(avatar=data[\"avatar\"],fname=data[\"fname\"],lname=data[\"lname\"],role=data[\"role\"],cid=data[\"cid\"],mobile=data[\"mobile\"],email=data[\"email\"],username=data[\"username\"],password=password,rank=data[\"rank\"],election_option=data[\"election_option\"], del_flag=0)\n    data_data = TbUsers(fname=data[\"fname\"], lname=data[\"lname\"], role=data[\"role\"], cid=data[\"cid\"], mobile=data[\"mobile\"], email=data[\"email\"],\n                        username=data[\"username\"], password=password, rank=data[\"rank\"], election_option=data[\"election_option\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef updateUser(request):",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "updateUser",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def updateUser(request):\n    data = json.loads(request.body)\n    data_data = TbUsers.objects.raw(\n        'select * from tb_users where id = ' + str(data['id']))[0]\n    data_data.fname = data['fname']\n    data_data.lname = data['lname']\n    # data_data.avatar = data['avatar']\n    data_data.role = data['role']\n    data_data.cid = data['cid']\n    data_data.mobile = data['mobile']",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delUser",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delUser(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    data_del = TbUsers.objects.raw(\n        'select * from tb_users where id = ' + id)[0]",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getMyTeamId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getMyTeamId(request):\n    queryprms = request.GET\n    userid = queryprms.get('userid', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    cursor = connection.cursor()\n    cursor.execute('select t.id, u.avatar, u.fname, u.lname, u.role, u.cid, u.mobile, u.email, u.username, u.rank, u.election_option from (select id, teamuser_id from tb_team_members where candidate_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.teamuser_id = u.id where (fname rlike \"' +",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getMyCandidateId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getMyCandidateId(request):\n    queryprms = request.GET\n    userid = queryprms.get('userid', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    cursor = connection.cursor()\n    cursor.execute('select t.id, u.avatar, u.fname, u.lname, u.role, u.cid, u.mobile, u.email, u.username, u.rank, u.election_option from (select id, candidate_id from tb_team_members where teamuser_id = ' + userid + ' and del_flag = 0) as t join (select * from tb_users where del_flag = 0) as u on t.candidate_id = u.id where (fname rlike \"' +",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "getMyGuanatorId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def getMyGuanatorId(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    userid = queryprms.get('userid', 1)\n    limit = int(queryprms.get('limit', 5))\n    keyword = queryprms.get('keyword', \"\")\n    pagenum = int(queryprms.get('pagenum', 1))\n    filter = queryprms.get('filter', \"id\")\n    sorter = queryprms.get('sorter', \"asc\")\n    cursor = connection.cursor()",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delMyGuanatorId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delMyGuanatorId(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_del = TbGuarantees.objects.raw(\n        'select * from tb_guarantees where id = ' + id)[0]\n    data_del.del_flag = 1\n    data_del.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@api_view(['GET'])\ndef delMyTeamId(request):",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "delMyTeamId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def delMyTeamId(request):\n    queryprms = request.GET\n    id = queryprms.get('id', 1)\n    data_del = TbTeamMembers.objects.raw(\n        'select * from tb_team_members where id = ' + id)[0]\n    data_del.del_flag = 1\n    data_del.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef addMyTeamId(request):",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addMyTeamId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addMyTeamId(request):\n    data = json.loads(request.body)\n    data_data = TbTeamMembers(\n        candidate_id=data[\"canid\"], teamuser_id=data[\"teamid\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef addMyCandidateId(request):\n    data = json.loads(request.body)\n    data_data = TbTeamMembers(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addMyCandidateId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addMyCandidateId(request):\n    data = json.loads(request.body)\n    data_data = TbTeamMembers(\n        candidate_id=data[\"canid\"], teamuser_id=data[\"teamid\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)\n@ api_view(['POST'])\ndef addMyGuanatorId(request):\n    data = json.loads(request.body)\n    data_data = TbGuarantees(",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "addMyGuanatorId",
+        "kind": 2,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "def addMyGuanatorId(request):\n    data = json.loads(request.body)\n    data_data = TbGuarantees(\n        user_id=data[\"userid\"], election_id=data[\"electionid\"], guarantor_id=data[\"guarantorid\"], guarantee=data[\"guarantee\"], attended=data[\"attended\"], status=data[\"status\"], del_flag=0)\n    data_data.save()\n    return JsonResponse({\"code\": 200}, safe=False)",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "SECRET_KEY = b'pseudorandomly generated server secret key'\nAUTH_SIZE = 16\n@api_view(['POST'])\ndef upLoadImage(request):\n    if request.method == 'POST':\n        image = request.FILES.get('image')\n        letters = string.ascii_lowercase\n        result_str = ''.join(random.choice(letters) for i in range(20))\n        if image:\n            with open(os.path.join(settings.MEDIA_ROOT, result_str + image.name), 'wb+') as destination:",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_SIZE",
+        "kind": 5,
+        "importPath": "restapi.views",
+        "description": "restapi.views",
+        "peekOfCode": "AUTH_SIZE = 16\n@api_view(['POST'])\ndef upLoadImage(request):\n    if request.method == 'POST':\n        image = request.FILES.get('image')\n        letters = string.ascii_lowercase\n        result_str = ''.join(random.choice(letters) for i in range(20))\n        if image:\n            with open(os.path.join(settings.MEDIA_ROOT, result_str + image.name), 'wb+') as destination:\n                for chunk in image.chunks():",
+        "detail": "restapi.views",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "manage",
+        "description": "manage",
+        "peekOfCode": "def main():\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"\n        ) from exc",
+        "detail": "manage",
+        "documentation": {}
+    }
+]

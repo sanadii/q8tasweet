@@ -1,18 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React from 'react';
-import { Button, Row, Col, Card, Form, FormGroup, Modal, Table } from "react-bootstrap";
+import { Button, Row, Col, Card, Form, FormGroup, Modal } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import DataTable from "react-data-table-component";
 import Pagination from '@mui/material/Pagination';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import Creatable from "react-select/creatable";
-import {backend_url } from "../../Constant/Config"
 import Swal from "sweetalert2";
+import { backend_url } from "../../Constant/Config"
 const PermissionLists = () => {
     const columns = [
         {
             name: "No",
-            width:"60px",
+            width: "60px",
             selector: (row) => [row.no],
             className: 'table-column-center'
         },
@@ -46,7 +47,7 @@ const PermissionLists = () => {
         },
         {
             name: "Action",
-            width:"100px",
+            width: "100px",
             cell: (row) => (
                 <span className="" style={{ width: "100%", textAlign: "end" }}>
                     <OverlayTrigger placement="top" overlay={<Tooltip>Edit</Tooltip>}>
@@ -87,7 +88,7 @@ const PermissionLists = () => {
     ];
     const [show, setShow] = React.useState({ flag: false, mode: 0 });
     const [postData, setPostData] = React.useState({ limit: 5, keyword: "", filter: "name", sorter: "desc", pagenum: 1 });
-    React.useEffect(() => { 
+    React.useEffect(() => {
         fetch(backend_url + 'getMenu')
             .then(response => response.json())
             .then(data => {
@@ -105,18 +106,18 @@ const PermissionLists = () => {
                 setMenuList({ data: menu_list })
             });
         getData(postData);
-        }, []);
+    }, []);
     const handleClose = () => setShow({ flag: false, mode: 0 });
     const handleShow = () => setShow({ flag: true, mode: 1 });
     const handleDetailShow = () => setShow({ flag: true, mode: 2 });
     const [allData, setAllData] = React.useState({ data: [], count: 0 });
-    const [dataValue, setDataValue] = React.useState({id:0, name: "", menu: "", description: "" })
+    const [dataValue, setDataValue] = React.useState({ id: 0, name: "", menu: "", description: "" })
     const [menuList, setMenuList] = React.useState({ data: [] });
     const getData = (data) => {
         fetch(backend_url + 'getPermission/?limit=' + data.limit + '&keyword=' + data.keyword + '&filter=' + data.filter + '&sorter=' + data.sorter + '&pagenum=' + data.pagenum, { method: 'GET' })
             .then(response => response.json())
             .then(async data => {
-                const set_data=[];
+                const set_data = [];
                 await data.data.map(async e => {
                     let set_Data_row = e;
                     set_Data_row.menu = [];
@@ -248,7 +249,7 @@ const PermissionLists = () => {
                     </span>
                 </div>
                 <div className="justify-content-center mt-2">
-                    <Link className="btn me-2 btn-rounded btn-outline-primary" to="#" onClick={() => { handleShow(); setDataValue({id:0, name: "", menu: "", description: "" }) }}><i className="fe fe-plus me-2"></i>Add New Permission</Link>
+                    <Link className="btn me-2 btn-rounded btn-outline-primary" to="#" onClick={() => { handleShow(); setDataValue({ id: 0, name: "", menu: "", description: "" }) }}><i className="fe fe-plus me-2"></i>Add New Permission</Link>
                     <Modal show={show.flag} onHide={handleClose}>
                         <Modal.Header className="modal-header">
                             {show.mode - 1 === 0 ?
