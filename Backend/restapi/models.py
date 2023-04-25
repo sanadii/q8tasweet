@@ -9,6 +9,7 @@ from django.db import models
 
 
 class TbElections(models.Model):
+    id = models.BigAutoField(primary_key=True)
     image = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
@@ -29,6 +30,7 @@ class TbElections(models.Model):
 
 
 class TbGuarantees(models.Model):
+    id = models.BigAutoField(primary_key=True)
     user_id = models.IntegerField(blank=True, null=True)
     election_id = models.IntegerField(blank=True, null=True)
     guarantor_id = models.IntegerField(blank=True, null=True)
@@ -47,6 +49,7 @@ class TbGuarantees(models.Model):
 
 
 class TbMenu(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=255, blank=True, null=True)
     # Field name made lowercase.
@@ -63,6 +66,7 @@ class TbMenu(models.Model):
 
 
 class TbPermission(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
@@ -77,7 +81,7 @@ class TbPermission(models.Model):
 
 
 class TbSorting(models.Model):
-    no = models.IntegerField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
     create_by = models.IntegerField(blank=True, null=True)
@@ -91,6 +95,7 @@ class TbSorting(models.Model):
 
 
 class TbUserRank(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     # Field name made lowercase.
     permissionid = models.IntegerField(
@@ -109,6 +114,7 @@ class TbUserRank(models.Model):
 
 
 class TbUsers(models.Model):
+    id = models.BigAutoField(primary_key=True)
     fname = models.CharField(max_length=255, blank=True, null=True)
     lname = models.CharField(max_length=255, blank=True, null=True)
     # avatar = models.CharField(max_length=255, blank=True, null=True)
@@ -132,6 +138,7 @@ class TbUsers(models.Model):
 
 
 class TbUsersRole(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     # Field name made lowercase.
     permissionid = models.IntegerField(
@@ -148,6 +155,7 @@ class TbUsersRole(models.Model):
 
 
 class TbVoters(models.Model):
+    id = models.BigAutoField(primary_key=True)
     election_id = models.IntegerField(blank=True, null=True)
     civil_id = models.IntegerField(blank=True, null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -163,8 +171,9 @@ class TbVoters(models.Model):
 
 
 class TbPermissionMenu(models.Model):
+    id = models.BigAutoField(primary_key=True)
     permissionid = models.IntegerField(
-        db_column='permissionId', blank=True, null=True)
+    db_column='permissionId', blank=True, null=True)
     menuid = models.IntegerField(db_column='menuId', blank=True, null=True)
     value = models.CharField(max_length=255, blank=True, null=True)
     label = models.CharField(max_length=255, blank=True, null=True)
@@ -175,6 +184,7 @@ class TbPermissionMenu(models.Model):
 
 
 class TbTeamMembers(models.Model):
+    id = models.BigAutoField(primary_key=True)
     candidate_id = models.IntegerField(blank=True, null=True)
     teamuser_id = models.IntegerField(blank=True, null=True)
     del_flag = models.IntegerField(blank=True, null=True)
